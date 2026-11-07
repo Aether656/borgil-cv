@@ -8,6 +8,15 @@
 - `assets/motion/`, `assets/layout/`, `assets/ui/`, `assets/diagrams/` — хөдөлгөөн, байршил, диаграм
 - `assets/icons/` — HTML, CSS, JavaScript, Claude, GitHub-ийн жинхэнэ дүрс
 
+## Хэсгүүд
+Highlight бичлэг ба тамирчны үзүүлэлт, тэмцээний амжилт, зуны бэлтгэлийн хуваарь, баг, дасгалжуулагчийн үг, Ирээдүйн би, сургууль, төслүүд, холбоо барих маягт. Дээд цэсний `EN` товч бүх бичвэрийг англи болгоно (текст бүрийн `data-en` утга).
+
+## Холбоо барих маягт
+Мессеж Supabase-ийн `contact_messages` хүснэгтэд хадгалагдана. Хүснэгтийг `supabase/contact_messages.sql`-ээр үүсгэнэ. Ирсэн мессежийг Supabase dashboard → Table Editor → contact_messages дээр уншина.
+
+## Зочдын тоо
+Vercel dashboard → borgil-cv → Analytics хэсэгт Web Analytics-ийг асаахад хэдэн хүн орсныг харуулна.
+
 ## Зураг нэмэх
 Нүүр зураг болон тоглолтын зургаа `assets/img/` хавтаст хуулаад Claude-аас нүүр хэсгийг зурагтай болгохыг хүсээрэй.
 

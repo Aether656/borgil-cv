@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Боргил — волейболчин, шигшээ багийн холбогч болох зорилготой</title>
+<title data-en="Borgil — volleyball setter aiming for the national team">Боргил — волейболчин, шигшээ багийн холбогч болох зорилготой</title>
 <meta name="description" content="Боргил — 17 настай мэргэжлийн волейболчин. 38&#8209;р сургуулийн 12-р ангийн сурагч, шигшээ багийн холбогч болохоор бэлтгэж байна.">
 <meta name="site-kind" content="other">
 <meta name="page-type" content="service">
@@ -41,7 +41,6 @@
   #volleyball .frame:last-child .frame__img { object-position: 50% 45%; }
   #study .frame { --ratio: 75%; }
   #study .frame__img { object-position: 50% 50%; }
-  /* the whole portrait: the frame takes the photograph's own ratio, its height capped by the screen */
   /* the whole portrait, no box around it: the photograph alone with the page radius */
   .portrait-full { margin: 0; display: flex; justify-content: flex-end; }
   .portrait-full img { display: block; width: 100%; height: auto; aspect-ratio: 570 / 1000; object-fit: cover; border-radius: var(--r-lg); transition: transform .5s cubic-bezier(.2,.7,.2,1); }
@@ -61,6 +60,73 @@
   main > section.section:not(.hero), footer.closing:not(.footer--links) { height: auto; min-height: calc(var(--h, 1) * 100svh); }
   @media (max-width: 1023px) and (max-height: 760px) { main > section.hero { height: auto; min-height: 100svh; } main > section.hero .hero-visual { flex: none; height: 56vw; min-height: 240px; } }
   @media (max-height: 800px) and (min-width: 1024px) { #web .panel { --p-h: 112px; } #volleyball .frame { --ratio: 110%; } }
+
+  /* language switch in the nav: shows the language it switches to */
+  .lang-btn { height: 36px; min-width: 44px; padding: 0 var(--s-3); border-radius: 999px; border: 1px solid var(--line-strong, var(--line)); background: transparent; color: var(--ink); font: 500 var(--t-small)/1 var(--font-text); letter-spacing: .02em; cursor: pointer; transition: background .15s, transform .15s; }
+  .lang-btn:hover { background: var(--surface); }
+  .lang-btn:active { transform: scale(.96); }
+  .nav__actions { display: flex; align-items: center; gap: var(--s-3); }
+  @media (max-width: 1023px) { .nav:not(.is-open) .nav__actions > .lang-btn { display: inline-flex; align-items: center; justify-content: center; height: 44px; } .nav.is-open .nav__actions .lang-btn { width: 100%; height: 48px; } }
+
+  /* highlight: the match clip beside the measured numbers */
+  .clip { margin: 0; border-radius: var(--r-lg); overflow: hidden; background: #000; }
+  .clip video { display: block; width: 100%; height: auto; max-height: min(72svh, 680px); object-fit: contain; background: #000; }
+  .athlete .stats { grid-template-columns: 1fr 1fr; gap: var(--s-7) var(--s-5); }
+  .athlete .stats dt { color: var(--muted); font-size: var(--t-small); }
+  .athlete .stats .t-stat { font-size: clamp(30px, 1.6vw + 18px, 44px); }
+  .athlete .stats .unit { font-size: .45em; color: var(--muted); margin-left: .15em; letter-spacing: 0; }
+
+  /* competition record: one card per medal, newest last as a history */
+  .medal .frame { --ratio: 64%; margin-bottom: var(--s-5); }
+  @media (max-height: 800px) and (min-width: 1024px) { .medal .frame { --ratio: 52%; } }
+  @media (max-width: 639px) { .medal .frame { --ratio: 56%; } .medal + .medal { margin-top: var(--s-6); } }
+  .medal .frame__img { object-position: 50% 52%; }
+  .medal__year { margin: 0 0 var(--s-2); color: var(--accent); font-size: var(--t-label); font-weight: 500; font-variant-numeric: tabular-nums; }
+  .medal h3 { margin: 0 0 var(--s-2); }
+  .medal p { margin: 0; color: var(--muted); }
+  .medal__place { display: inline-flex; align-items: center; gap: var(--s-2); margin-top: var(--s-4); color: var(--ink); }
+  .medal__place::before { content: ""; width: 12px; height: 12px; border-radius: 50%; background: linear-gradient(135deg, #f1f3f6, #9aa3ae); }
+
+  /* summer schedule: the training days as a week strip */
+  .week { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--s-4); margin: 0; padding: 0; list-style: none; }
+  .day { display: flex; flex-direction: column; gap: var(--s-3); min-height: 300px; padding: var(--s-6); border-radius: var(--r-lg); background: var(--surface); }
+  .day__name { margin: 0; font-size: var(--t-label); font-weight: 500; color: var(--muted); }
+  .day__what { margin: 0; font: var(--display-weight) clamp(22px, 1vw + 14px, 28px)/1.15 var(--font-display); letter-spacing: var(--display-tracking); }
+  .day__time { margin-top: auto; font-variant-numeric: tabular-nums; color: var(--accent); }
+  .day--match { background: color-mix(in oklab, var(--accent) 14%, var(--surface)); }
+  .monthly { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--s-2) var(--s-5); margin-top: var(--s-6); padding-top: var(--s-5); border-top: 1px solid var(--line); }
+  .monthly p { margin: 0; }
+  @media (max-width: 1023px) { .week { grid-template-columns: 1fr 1fr; } .day { min-height: 200px; } }
+  @media (max-height: 800px) and (min-width: 1024px) { .day { min-height: 220px; } }
+  @media (max-width: 479px) { .day { padding: var(--s-5); } }
+
+  /* the team photograph, wide */
+  #team .frame { --ratio: 52%; }
+  @media (min-width: 1200px) { #team .frame { --ratio: 42%; } }
+  @media (max-width: 1023px) { #team .frame { --ratio: 72%; } }
+  @media (max-height: 800px) and (min-width: 1024px) { #team .frame { --ratio: 46%; } }
+  #team .frame__img { object-position: 50% 62%; }
+  @media (max-width: 639px) { #team .frame { --ratio: 100%; } }
+
+  /* advice from the coach */
+  #coach .frame { --ratio: 105%; }
+  #coach .frame__img { object-position: 50% 30%; }
+  .advice { display: grid; gap: var(--s-5); margin: 0; padding: 0; list-style: none; counter-reset: a; }
+  .advice li { display: grid; grid-template-columns: 40px 1fr; gap: var(--s-4); counter-increment: a; }
+  .advice li::before { content: counter(a, decimal-leading-zero); display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--line-strong, var(--line)); font-size: var(--t-small); font-variant-numeric: tabular-nums; color: var(--accent); }
+  .advice b { display: block; font-weight: 500; color: var(--ink); }
+  .advice span { color: var(--muted); }
+  .coach__by { margin: 0; color: var(--muted); }
+  .coach__by b { color: var(--ink); font-weight: 500; }
+
+  /* contact form (messages go to Supabase) */
+  .form { max-width: 560px; }
+  .form .field :is(input, textarea) { width: 100%; }
+  .form__hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+  .form__status { margin: 0; min-height: 1.5em; color: var(--muted); }
+  .form__status[data-state="ok"] { color: var(--accent); }
+  .form__status[data-state="err"] { color: #ff8a8a; }
+
   /* the plan deck (#future): one slide at a time, moved by the buttons, the arrow keys or a swipe */
   .deck { --deck-h: 400px; outline: none; }
   .deck:focus-visible { box-shadow: 0 0 0 2px var(--accent); border-radius: var(--r-lg); }
@@ -93,21 +159,24 @@
 <!-- type: service (хувийн танилцуулга: тамирчин, сурагч)
      deal: hero split (film dealt; re-dealt: no film or wide photograph), nav nav-centre, close close-photo,
      footer footer-columns, rhythm space, buttons pill, mark arc,
-     palette blue-black-cornflower (the client asked for a black page with white type), pairing geist (Cyrillic), grounds none, moments none -->
+     palette blue-black-cornflower (the client asked for a black page with white type), pairing geist (Cyrillic), grounds none, moments none
+     language: Mongolian by default; the nav button swaps every [data-en] text to English (the client asked for MN / EN) -->
 
 <header class="nav nav--centre">
   <div class="wrap nav__bar">
-    <a class="nav__logo" href="#top"><span class="mark" data-mark="arc" aria-hidden="true"></span>Боргил</a>
-    <nav class="nav__links" aria-label="Үндсэн цэс">
-      <div class="nav__item"><a class="nav__link" href="#volleyball">Волейбол</a></div>
-      <div class="nav__item"><a class="nav__link" href="#future">Ирээдүй</a></div>
-      <div class="nav__item"><a class="nav__link" href="#study">Сургууль</a></div>
-      <div class="nav__item"><a class="nav__link" href="#web">Төслүүд</a></div>
+    <a class="nav__logo" href="#top"><span class="mark" data-mark="arc" aria-hidden="true"></span><span data-en="Borgil">Боргил</span></a>
+    <nav class="nav__links" aria-label="Үндсэн цэс" data-en-label="Main menu">
+      <div class="nav__item"><a class="nav__link" href="#highlight" data-en="Highlights">Highlight</a></div>
+      <div class="nav__item"><a class="nav__link" href="#record" data-en="Record">Амжилт</a></div>
+      <div class="nav__item"><a class="nav__link" href="#team" data-en="Team">Баг</a></div>
+      <div class="nav__item"><a class="nav__link" href="#future" data-en="Future">Ирээдүй</a></div>
+      <div class="nav__item"><a class="nav__link" href="#study" data-en="School">Сургууль</a></div>
     </nav>
     <div class="nav__actions">
-      <a class="btn btn--primary" href="mailto:borgilbadrakh882@gmail.com">Имэйл бичих</a>
+      <button class="lang-btn" type="button" data-lang-toggle aria-label="Switch to English">EN</button>
+      <a class="btn btn--primary" href="#contact" data-en="Contact">Холбогдох</a>
     </div>
-    <button class="nav__toggle" type="button" aria-expanded="false" aria-label="Цэс">
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-label="Цэс" data-en-label="Menu">
       <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 5h14M2 13h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
     </button>
   </div>
@@ -118,20 +187,20 @@
     <div class="wrap">
       <div class="hero-text grid hero-split">
         <div class="hero-copy span-6">
-          <h1 id="hero-h">Боргил, 17 настай мэргэжлийн волейболчин</h1>
-          <p class="t-lead">Монголын шигшээ багийн холбогч болохоор бэлтгэж байна. 38&#8209;р сургуулийн төгсөх ангийн сурагч, англи, орос хэлээр ярьдаг.</p>
+          <h1 id="hero-h" data-en="Borgil, a 17-year-old competitive volleyball player">Боргил, 17 настай мэргэжлийн волейболчин</h1>
+          <p class="t-lead" data-en="Training to become the setter for Mongolia's national team. A senior at School No. 38 who speaks English and Russian.">Монголын шигшээ багийн холбогч болохоор бэлтгэж байна. 38&#8209;р сургуулийн төгсөх ангийн сурагч, англи, орос хэлээр ярьдаг.</p>
           <div class="btn-row">
-            <a class="btn btn--primary" href="mailto:borgilbadrakh882@gmail.com">Имэйл бичих<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
-            <a class="btn btn--secondary" href="#volleyball">Зорилгыг унших</a>
+            <a class="btn btn--primary" href="#highlight"><span data-en="Watch the highlights">Highlight үзэх</span><svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
+            <a class="btn btn--secondary" href="#volleyball" data-en="Read my goal">Зорилгыг унших</a>
           </div>
           <dl class="hero-facts">
-            <div><dt>Байрлал</dt><dd>Холбогч</dd></div>
-            <div><dt>Сургууль</dt><dd>38&#8209;р сургууль, 12 дугаар анги</dd></div>
-            <div><dt>Клуб</dt><dd>Darkhan Moguls</dd></div>
+            <div><dt data-en="Position">Байрлал</dt><dd data-en="Setter">Холбогч</dd></div>
+            <div><dt data-en="School">Сургууль</dt><dd data-en="School No. 38, 12th grade">38&#8209;р сургууль, 12 дугаар анги</dd></div>
+            <div><dt data-en="Club">Клуб</dt><dd>Darkhan Moguls</dd></div>
           </dl>
         </div>
         <div class="hero-visual frame frame--photo span-6 start-7">
-          <img class="frame__img" src="assets/img/match-set.jpg" alt="Боргил тоглолтын үеэр бөмбөг холбож байна" fetchpriority="high" width="946" height="2046" data-source="client" data-subject="Боргил талбай дээр бөмбөг холбож байна">
+          <img class="frame__img" src="assets/img/match-set.jpg" alt="Боргил тоглолтын үеэр бөмбөг холбож байна" data-en-alt="Borgil setting the ball during a match" fetchpriority="high" width="946" height="2046" data-source="client" data-subject="Боргил талбай дээр бөмбөг холбож байна">
         </div>
       </div>
     </div>
@@ -139,23 +208,126 @@
 
   <section class="section" id="volleyball" aria-labelledby="volleyball-h">
     <div class="wrap">
-      <div class="section-head"><h2 id="volleyball-h">Волейбол ба шигшээ багийн зорилго</h2></div>
+      <div class="section-head"><h2 id="volleyball-h" data-en="Volleyball and the national team goal">Волейбол ба шигшээ багийн зорилго</h2></div>
       <div class="grid grid--top">
         <div class="span-6 stack-6">
-          <p class="t-lead measure">Мэргэжлийн түвшинд волейбол тоглодог. Холбогч бол багийн довтолгоог зохион байгуулдаг тоглогч бөгөөд би энэ байрлалаар шигшээ багт тоглохыг зорьж байна.</p>
+          <p class="t-lead measure" data-en="I play volleyball at a competitive level. The setter runs the team's attack, and this is the position I aim to play for the national team.">Мэргэжлийн түвшинд волейбол тоглодог. Холбогч бол багийн довтолгоог зохион байгуулдаг тоглогч бөгөөд би энэ байрлалаар шигшээ багт тоглохыг зорьж байна.</p>
           <ul class="rows">
-            <li><span class="rows__name">Спорт</span><span class="rows__value">Волейбол, мэргэжлийн түвшин</span></li>
-            <li><span class="rows__name">Зорилго</span><span class="rows__value">Монголын шигшээ баг</span></li>
-            <li><span class="rows__name">Чанар</span><span class="rows__value">Багаар ажиллах, сахилга бат</span></li>
+            <li><span class="rows__name" data-en="Sport">Спорт</span><span class="rows__value" data-en="Volleyball, competitive level">Волейбол, мэргэжлийн түвшин</span></li>
+            <li><span class="rows__name" data-en="Goal">Зорилго</span><span class="rows__value" data-en="Mongolia national team">Монголын шигшээ баг</span></li>
+            <li><span class="rows__name" data-en="Strengths">Чанар</span><span class="rows__value" data-en="Teamwork, discipline">Багаар ажиллах, сахилга бат</span></li>
           </ul>
         </div>
         <div class="photo-pair span-6 start-7">
         <div class="frame frame--photo">
-          <img class="frame__img" src="assets/img/match-receive.jpg" alt="Боргил бэлтгэлийн үеэр бөмбөг хүлээн авч байна" loading="lazy" width="1320" height="1192" data-source="client" data-subject="Боргил бэлтгэл дээр бөмбөг хүлээн авч байна">
+          <img class="frame__img" src="assets/img/match-receive.jpg" alt="Боргил бэлтгэлийн үеэр бөмбөг хүлээн авч байна" data-en-alt="Borgil receiving the ball in training" loading="lazy" width="1320" height="1192" data-source="client" data-subject="Боргил бэлтгэл дээр бөмбөг хүлээн авч байна">
         </div>
         <div class="frame frame--photo">
-          <img class="frame__img" src="assets/img/selfie-jersey.jpg" alt="Боргил багийнхаа өмсгөлтэй" loading="lazy" width="1536" height="2048" data-source="client" data-subject="Боргил багийн өмсгөлтэй">
+          <img class="frame__img" src="assets/img/selfie-jersey.jpg" alt="Боргил багийнхаа өмсгөлтэй" data-en-alt="Borgil in his team jersey" loading="lazy" width="1536" height="2048" data-source="client" data-subject="Боргил багийн өмсгөлтэй">
         </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HIGHLIGHT: the client's match clip (plays only when pressed) beside his measured numbers -->
+  <section class="section athlete" id="highlight" aria-labelledby="highlight-h">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="highlight-h" data-en="Match highlights and stats">Тоглолтын highlight ба үзүүлэлт</h2>
+        <p data-en="A short clip from a match, and my measured numbers.">Тоглолтын богино бичлэг болон миний хэмжсэн үзүүлэлтүүд.</p>
+      </div>
+      <div class="grid grid--top">
+        <figure class="clip span-7">
+          <video controls playsinline preload="metadata" width="654" height="368" aria-label="Боргилын тоглолтын highlight бичлэг" data-en-label="Borgil's match highlight video">
+            <source src="assets/img/highlight.mp4#t=0.5" type="video/mp4">
+          </video>
+        </figure>
+        <div class="span-4 start-9 stack-6">
+          <p class="t-label" data-en="Athlete profile">Тамирчны үзүүлэлт</p>
+          <dl class="stats">
+            <div><dt data-en="Height">Өндөр</dt><dd class="t-stat">170<span class="unit" data-en="cm">см</span></dd></div>
+            <div><dt data-en="Jump reach">Үсрэлтийн өндөр</dt><dd class="t-stat">293<span class="unit" data-en="cm">см</span></dd></div>
+            <div><dt data-en="Dominant hand">Тоглодог гар</dt><dd class="t-stat" data-en="Left">Зүүн</dd></div>
+            <div><dt data-en="Position">Байрлал</dt><dd class="t-stat" data-en="Setter">Холбогч</dd></div>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RECORD: the client's medals, oldest first, as a history -->
+  <section class="section" id="record" aria-labelledby="record-h">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="record-h" data-en="Competition record">Тэмцээний амжилтын түүх</h2>
+        <p data-en="Medals from the Darkhan Moguls club tournaments.">Darkhan Moguls клубийн тэмцээнүүдэд авсан медалиуд.</p>
+      </div>
+      <div class="grid grid--top">
+        <article class="medal span-5">
+          <div class="frame frame--photo"><img class="frame__img" src="assets/img/medal-2024.jpg" alt="2024 оны мөнгөн медаль" data-en-alt="Silver medal, 2024" loading="lazy" width="900" height="1200" data-source="client" data-subject="2024 оны мөнгөн медаль"></div>
+          <p class="medal__year">2024</p>
+          <h3 data-en="Darkhan Moguls inter-branch tournament">Darkhan Moguls клубийн салбар хоорондын тэмцээн</h3>
+          <p class="medal__place" data-en="2nd place, silver medal">2&#8209;р байр, мөнгөн медаль</p>
+        </article>
+        <article class="medal span-5 start-8">
+          <div class="frame frame--photo"><img class="frame__img" src="assets/img/medal-2026.jpg" alt="2026 оны мөнгөн медаль" data-en-alt="Silver medal, 2026" loading="lazy" width="900" height="1200" data-source="client" data-subject="2026 оны мөнгөн медаль"></div>
+          <p class="medal__year">2026</p>
+          <h3 data-en="Darkhan Moguls inter-branch tournament">Darkhan Moguls клубийн салбар хоорондын тэмцээн</h3>
+          <p class="medal__place" data-en="2nd place, silver medal">2&#8209;р байр, мөнгөн медаль</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRAINING: the summer intensive week as the client gave it -->
+  <section class="section" id="training" aria-labelledby="training-h">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="training-h" data-en="Summer intensive training">Зуны эрчимжүүлсэн бэлтгэлийн хуваарь</h2>
+        <p data-en="My weekly plan through the summer.">Зуны турш долоо хоног бүр ингэж бэлтгэл хийдэг.</p>
+      </div>
+      <ul class="week">
+        <li class="day"><p class="day__name" data-en="Monday">Даваа</p><p class="day__what" data-en="Strength training">Хүчний бэлтгэл</p><span class="day__time">11:00–13:00</span></li>
+        <li class="day"><p class="day__name" data-en="Tuesday">Мягмар</p><p class="day__what" data-en="Strength training">Хүчний бэлтгэл</p><span class="day__time">11:00–13:00</span></li>
+        <li class="day"><p class="day__name" data-en="Wednesday">Лхагва</p><p class="day__what" data-en="Strength training">Хүчний бэлтгэл</p><span class="day__time">11:00–13:00</span></li>
+        <li class="day day--match"><p class="day__name" data-en="Thursday">Пүрэв</p><p class="day__what" data-en="Inter-branch match">Салбар хоорондын тоглолт</p><span class="day__time" data-en="Match day">Тоглолтын өдөр</span></li>
+      </ul>
+      <div class="monthly">
+        <p data-en="&lt;b&gt;Every month:&lt;/b&gt; &lt;span class=&quot;muted&quot;&gt;an inter-branch tournament&lt;/span&gt;"><b>Сар бүр:</b> <span class="muted">салбар хоорондын тэмцээн болдог</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM: the client's team photograph, wide -->
+  <section class="section" id="team" aria-labelledby="team-h">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="team-h" data-en="My team">Манай багийнхан</h2>
+        <p data-en="Teammates from Darkhan Moguls, after a tournament.">Darkhan Moguls-ийн багийнхан маань тэмцээний дараа.</p>
+      </div>
+      <div class="frame frame--photo">
+        <img class="frame__img" src="assets/img/team.jpg" alt="Darkhan Moguls-ийн багийнхан медаль, өргөмжлөлтэй" data-en-alt="The Darkhan Moguls team with medals and certificates" loading="lazy" width="1600" height="1200" data-source="client" data-subject="Darkhan Moguls-ийн баг тэмцээний дараа">
+      </div>
+    </div>
+  </section>
+
+  <!-- COACH: the advice, word for word from the client, beside the photograph he gave -->
+  <section class="section" id="coach" aria-labelledby="coach-h">
+    <div class="wrap">
+      <div class="grid grid--top">
+        <div class="frame frame--photo span-5">
+          <img class="frame__img" src="assets/img/coach.jpg" alt="Ё.Батбаяр, Darkhan Moguls-ийн 2 дугаартай өмсгөлтэй" data-en-alt="Yo. Batbayar in the Darkhan Moguls number 2 jersey" loading="lazy" width="1284" height="1348" data-source="client" data-subject="Ё.Батбаяр талбай дээр">
+        </div>
+        <div class="span-6 start-7 stack-6">
+          <h2 id="coach-h" data-en="Advice from the coach">Дасгалжуулагчийн үг</h2>
+          <p class="coach__by" data-en="&lt;b&gt;Yo. Batbayar&lt;/b&gt;, Darkhan Moguls player, on what it takes to become a club athlete:"><b>Ё.Батбаяр</b>, Darkhan Moguls багийн тамирчин. Клубийн тамирчин болоход хэрэгтэй гэж хэлсэн зөвлөмжүүд:</p>
+          <ol class="advice">
+            <li><p data-en="&lt;b&gt;Train in a program and never stop.&lt;/b&gt; &lt;span&gt;Without steady training there is no progress.&lt;/span&gt;"><b>Сургалтад хамрагдаж, тасралтгүй хичээллэх.</b> <span>Тогтмол бэлтгэлгүйгээр ахиц гарахгүй.</span></p></li>
+            <li><p data-en="&lt;b&gt;Compete actively.&lt;/b&gt; &lt;span&gt;Build match experience and show what you can do.&lt;/span&gt;"><b>Тэмцээн уралдаанд идэвхтэй оролцох.</b> <span>Тоглолтын туршлага хуримтлуулж, өөрийгөө харуулах.</span></p></li>
+            <li><p data-en="&lt;b&gt;Go to tryouts.&lt;/b&gt; &lt;span&gt;Clubs usually pick their players through tryouts.&lt;/span&gt;"><b>Шалгаруулалтад оролцох.</b> <span>Клубууд ихэвчлэн шалгаруулалтаар тамирчин авдаг.</span></p></li>
+            <li><p data-en="&lt;b&gt;Have good manners.&lt;/b&gt; &lt;span&gt;How you treat your coach and teammates, and your discipline.&lt;/span&gt;"><b>Ёс зүйтэй байх.</b> <span>Дасгалжуулагч, багийнхандаа хандах хандлага, сахилга бат.</span></p></li>
+          </ol>
         </div>
       </div>
     </div>
@@ -165,59 +337,59 @@
   <section class="section" id="future" aria-labelledby="future-h">
     <div class="wrap">
       <div class="section-head">
-        <h2 id="future-h">Ирээдүйн би</h2>
-        <p class="measure">Намайг Боргил гэдэг. 17 настай, одоо 12&#8209;р ангид суралцаж байна. Darkhan Moguls клубт гүнзгий түвшний бэлтгэлд явдаг. Ирээдүйд волейболоор тууштай хичээллэж, тасралтгүй бэлтгэлээ хийж шигшээ багт тоглох зорилготой.</p>
+        <h2 id="future-h" data-en="Future me">Ирээдүйн би</h2>
+        <p class="measure" data-en="My name is Borgil. I am 17 and in 12th grade. I train in the advanced group at Darkhan Moguls club. I plan to keep training hard, without breaks, and to play for the national team.">Намайг Боргил гэдэг. 17 настай, одоо 12&#8209;р ангид суралцаж байна. Darkhan Moguls клубт гүнзгий түвшний бэлтгэлд явдаг. Ирээдүйд волейболоор тууштай хичээллэж, тасралтгүй бэлтгэлээ хийж шигшээ багт тоглох зорилготой.</p>
       </div>
-      <div class="deck" data-deck tabindex="0" aria-roledescription="carousel" aria-label="Зорилгодоо хүрэх төлөвлөгөө">
+      <div class="deck" data-deck tabindex="0" aria-roledescription="carousel" aria-label="Зорилгодоо хүрэх төлөвлөгөө" data-en-label="My plan to reach the goal">
         <div class="deck__viewport">
           <ol class="deck__track">
             <li class="deck__slide deck__slide--cover" aria-roledescription="slide" aria-label="1 / 5">
               <div class="deck__text">
-                <p class="deck__num">Төлөвлөгөө</p>
-                <h3 class="deck__title">Зорилгодоо хүрэх төлөвлөгөө</h3>
-                <p class="deck__body">Darkhan Moguls клубээс эхэлж, алхам алхмаар Монголын шигшээ баг хүртэл.</p>
+                <p class="deck__num" data-en="The plan">Төлөвлөгөө</p>
+                <h3 class="deck__title" data-en="My plan to reach the goal">Зорилгодоо хүрэх төлөвлөгөө</h3>
+                <p class="deck__body" data-en="Starting at Darkhan Moguls club, step by step, all the way to Mongolia's national team.">Darkhan Moguls клубээс эхэлж, алхам алхмаар Монголын шигшээ баг хүртэл.</p>
               </div>
-              <div class="deck__media"><img src="assets/img/club-logo.png" alt="Darkhan Moguls клубийн лого" loading="lazy" data-source="client" data-subject="Darkhan Moguls клубийн лого"></div>
+              <div class="deck__media"><img src="assets/img/club-logo.png" alt="Darkhan Moguls клубийн лого" data-en-alt="Darkhan Moguls club logo" loading="lazy" data-source="client" data-subject="Darkhan Moguls клубийн лого"></div>
             </li>
             <li class="deck__slide" aria-roledescription="slide" aria-label="2 / 5">
               <div class="deck__text">
-                <p class="deck__num">Алхам 01</p>
-                <h3 class="deck__title">Клубийн холбогч болох</h3>
-                <p class="deck__body">Багийн довтолгоог зохион байгуулдаг холбогчийн байрлалд бэлтгэлээ төвлөрүүлнэ.</p>
+                <p class="deck__num" data-en="Step 01">Алхам 01</p>
+                <h3 class="deck__title" data-en="Become the club's setter">Клубийн холбогч болох</h3>
+                <p class="deck__body" data-en="Focus my training on the setter position, the player who runs the team's attack.">Багийн довтолгоог зохион байгуулдаг холбогчийн байрлалд бэлтгэлээ төвлөрүүлнэ.</p>
               </div>
-              <div class="deck__media"><img src="assets/img/match-set.jpg" alt="Боргил бөмбөг холбож байна" loading="lazy" data-source="client" data-subject="Боргил бөмбөг холбож байна"></div>
+              <div class="deck__media"><img src="assets/img/match-set.jpg" alt="Боргил бөмбөг холбож байна" data-en-alt="Borgil setting the ball" loading="lazy" data-source="client" data-subject="Боргил бөмбөг холбож байна"></div>
             </li>
             <li class="deck__slide" aria-roledescription="slide" aria-label="3 / 5">
               <div class="deck__text">
-                <p class="deck__num">Алхам 02</p>
-                <h3 class="deck__title">Клубийн багтаа орж амжилттай тоглох</h3>
-                <p class="deck__body">Клубийнхээ багт орж, тоглолт бүрт амжилттай тоглоно.</p>
+                <p class="deck__num" data-en="Step 02">Алхам 02</p>
+                <h3 class="deck__title" data-en="Make the club team and play well">Клубийн багтаа орж амжилттай тоглох</h3>
+                <p class="deck__body" data-en="Earn a place on my club's team and play well in every match.">Клубийнхээ багт орж, тоглолт бүрт амжилттай тоглоно.</p>
               </div>
-              <div class="deck__media"><img src="assets/img/match-receive.jpg" alt="Боргил бөмбөг хүлээн авч байна" loading="lazy" data-source="client" data-subject="Боргил бөмбөг хүлээн авч байна"></div>
+              <div class="deck__media"><img src="assets/img/match-receive.jpg" alt="Боргил бөмбөг хүлээн авч байна" data-en-alt="Borgil receiving the ball" loading="lazy" data-source="client" data-subject="Боргил бөмбөг хүлээн авч байна"></div>
             </li>
             <li class="deck__slide" aria-roledescription="slide" aria-label="4 / 5">
               <div class="deck__text">
-                <p class="deck__num">Алхам 03</p>
-                <h3 class="deck__title">Darkhan Moguls-ийн Дээд лигийн багт орох</h3>
-                <p class="deck__body">Дээд лигийн багтаа тоглож, лигтээ амжилт үзүүлнэ.</p>
+                <p class="deck__num" data-en="Step 03">Алхам 03</p>
+                <h3 class="deck__title" data-en="Join the Darkhan Moguls Premier League team">Darkhan Moguls-ийн Дээд лигийн багт орох</h3>
+                <p class="deck__body" data-en="Play for the Premier League team and succeed in the league.">Дээд лигийн багтаа тоглож, лигтээ амжилт үзүүлнэ.</p>
               </div>
-              <div class="deck__media"><img src="assets/img/selfie-jersey.jpg" alt="Боргил Darkhan Moguls-ийн өмсгөлтэй" loading="lazy" data-source="client" data-subject="Боргил Darkhan Moguls-ийн өмсгөлтэй"></div>
+              <div class="deck__media"><img src="assets/img/selfie-jersey.jpg" alt="Боргил Darkhan Moguls-ийн өмсгөлтэй" data-en-alt="Borgil in the Darkhan Moguls jersey" loading="lazy" data-source="client" data-subject="Боргил Darkhan Moguls-ийн өмсгөлтэй"></div>
             </li>
             <li class="deck__slide deck__slide--goal" aria-roledescription="slide" aria-label="5 / 5">
               <div class="deck__text">
-                <p class="deck__num">Зорилго</p>
-                <h3 class="deck__title">Монголын шигшээ багт дуудагдах</h3>
-                <p class="deck__body">Лигт үзүүлсэн амжилтаараа шигшээ багт дуудагдаж, Монголын төлөө тоглоно.</p>
+                <p class="deck__num" data-en="The goal">Зорилго</p>
+                <h3 class="deck__title" data-en="Get called up to Mongolia's national team">Монголын шигшээ багт дуудагдах</h3>
+                <p class="deck__body" data-en="Earn a national team call-up through my league results, and play for Mongolia.">Лигт үзүүлсэн амжилтаараа шигшээ багт дуудагдаж, Монголын төлөө тоглоно.</p>
               </div>
-              <div class="deck__media"><img src="assets/img/play.jpg" alt="Боргил талбай дээр тоглож байна" loading="lazy" data-source="client" data-subject="Боргил талбай дээр тоглож байна"></div>
+              <div class="deck__media"><img src="assets/img/play.jpg" alt="Боргил талбай дээр тоглож байна" data-en-alt="Borgil playing on court" loading="lazy" data-source="client" data-subject="Боргил талбай дээр тоглож байна"></div>
             </li>
           </ol>
         </div>
         <div class="deck__bar">
           <p class="deck__count" aria-live="polite"><span data-deck-now>1</span> / 5</p>
           <div class="deck__progress" aria-hidden="true"><span data-deck-fill></span></div>
-          <button class="deck__btn" type="button" data-deck-prev aria-label="Өмнөх слайд"><svg viewBox="0 0 12 12" aria-hidden="true" width="14" height="14"><path d="M11 6H3M6.5 2.5 3 6l3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-          <button class="deck__btn" type="button" data-deck-next aria-label="Дараагийн слайд"><svg viewBox="0 0 12 12" aria-hidden="true" width="14" height="14"><path d="M1 6h8M5.5 2.5 9 6l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button class="deck__btn" type="button" data-deck-prev aria-label="Өмнөх слайд" data-en-label="Previous slide"><svg viewBox="0 0 12 12" aria-hidden="true" width="14" height="14"><path d="M11 6H3M6.5 2.5 3 6l3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button class="deck__btn" type="button" data-deck-next aria-label="Дараагийн слайд" data-en-label="Next slide"><svg viewBox="0 0 12 12" aria-hidden="true" width="14" height="14"><path d="M1 6h8M5.5 2.5 9 6l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         </div>
       </div>
     </div>
@@ -226,26 +398,26 @@
   <section class="section" id="study" aria-labelledby="study-h">
     <div class="wrap">
       <div class="section-head">
-        <h2 id="study-h">Сургууль ба гадаад хэл</h2>
-        <p>Спортоос гадна хичээлээ хийж, англи хэлээ ахиулж байна.</p>
+        <h2 id="study-h" data-en="School and languages">Сургууль ба гадаад хэл</h2>
+        <p data-en="Alongside sport I keep up with school and improve my English.">Спортоос гадна хичээлээ хийж, англи хэлээ ахиулж байна.</p>
       </div>
       <div class="grid grid--top">
         <div class="span-4 stack-4">
-          <p class="t-label">Боловсрол</p>
+          <p class="t-label" data-en="Education">Боловсрол</p>
           <ul class="rows">
-            <li><span class="rows__name">38&#8209;р сургууль</span><span class="rows__value">12 дугаар анги</span><p class="muted">Монгол-Германы хамтарсан 38 дугаар сургуулийн төгсөх анги.</p></li>
-            <li><span class="rows__name">Absolute</span><span class="rows__value">Англи хэл</span><p class="muted">Англи хэлний сургалтын төвд суралцаж байна.</p></li>
+            <li><span class="rows__name" data-en="School No. 38">38&#8209;р сургууль</span><span class="rows__value" data-en="12th grade">12 дугаар анги</span><p class="muted" data-en="Final year at the Mongolian-German joint School No. 38.">Монгол-Германы хамтарсан 38 дугаар сургуулийн төгсөх анги.</p></li>
+            <li><span class="rows__name">Absolute</span><span class="rows__value" data-en="English">Англи хэл</span><p class="muted" data-en="Studying at an English language centre.">Англи хэлний сургалтын төвд суралцаж байна.</p></li>
           </ul>
         </div>
         <div class="span-4 stack-4">
-          <p class="t-label">Хэл</p>
+          <p class="t-label" data-en="Languages">Хэл</p>
           <ul class="rows">
-            <li><span class="rows__name">Англи хэл</span><span class="rows__value">B1</span></li>
-            <li><span class="rows__name">Орос хэл</span><span class="rows__value">Ярьдаг</span></li>
+            <li><span class="rows__name" data-en="English">Англи хэл</span><span class="rows__value">B1</span></li>
+            <li><span class="rows__name" data-en="Russian">Орос хэл</span><span class="rows__value" data-en="Conversational">Ярьдаг</span></li>
           </ul>
         </div>
         <div class="frame frame--photo span-4">
-          <img class="frame__img" src="assets/img/school-38.jpg" alt="Монгол-Германы хамтарсан 38 дугаар сургуулийн байр" loading="lazy" width="516" height="387" data-source="client" data-subject="38 дугаар сургуулийн байр">
+          <img class="frame__img" src="assets/img/school-38.jpg" alt="Монгол-Германы хамтарсан 38 дугаар сургуулийн байр" data-en-alt="The Mongolian-German joint School No. 38 building" loading="lazy" width="516" height="387" data-source="client" data-subject="38 дугаар сургуулийн байр">
         </div>
       </div>
     </div>
@@ -254,8 +426,8 @@
   <section class="section" id="web" aria-labelledby="web-h" style="--hm: 2">
     <div class="wrap">
       <div class="section-head">
-        <h2 id="web-h">Вэб ба онлайн худалдааны төслүүд</h2>
-        <p>Claude-тай хамт код бичиж сурч байна. Энэ сайт бол анхны ажил.</p>
+        <h2 id="web-h" data-en="Web and online store projects">Вэб ба онлайн худалдааны төслүүд</h2>
+        <p data-en="I am learning to code with Claude. This site is my first project.">Claude-тай хамт код бичиж сурч байна. Энэ сайт бол анхны ажил.</p>
       </div>
       <div class="grid">
         <article class="card span-6">
@@ -266,62 +438,131 @@
             <span class="ic-tile"><img class="ic ic-40" src="assets/icons/claude.svg" alt="Claude" width="40" height="40"></span>
             <span class="ic-tile"><img class="ic ic-40 ic-ink" src="assets/icons/github.svg" alt="GitHub" width="40" height="40"></span>
           </div>
-          <h3>Энэ CV вэбсайтыг бүтээсэн</h3>
-          <p>HTML, CSS, JavaScript ашиглаж, Claude-тай хамт бичсэн. Код нь GitHub дээр нээлттэй.</p>
-          <a class="link" href="https://github.com/Aether656/borgil-cv" target="_blank" rel="noopener">Кодыг GitHub дээр үзэх</a>
+          <h3 data-en="Built this CV website">Энэ CV вэбсайтыг бүтээсэн</h3>
+          <p data-en="Written with HTML, CSS and JavaScript together with Claude. The code is open on GitHub.">HTML, CSS, JavaScript ашиглаж, Claude-тай хамт бичсэн. Код нь GitHub дээр нээлттэй.</p>
+          <a class="link" href="https://github.com/Aether656/borgil-cv" target="_blank" rel="noopener" data-en="See the code on GitHub">Кодыг GitHub дээр үзэх</a>
         </article>
         <article class="card span-6">
           <div class="tools panel">
             <span class="ic-tile"><svg class="ic ic-svg ic-24" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 10a4 4 0 0 1-8 0M3.103 6.034h17.794"/><path d="M3.4 5.467a2 2 0 0 0-.4 1.2V20a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6.667a2 2 0 0 0-.4-1.2l-2-2.667A2 2 0 0 0 17 2H7a2 2 0 0 0-1.6.8z"/></svg></span>
           </div>
-          <h3>Онлайн дэлгүүр нээхээр суралцаж байна</h3>
-          <p>Одоогоор туршлагагүй ч бараа нийлүүлэх, онлайнаар борлуулах чиглэлээр суралцаж, анхны төслөө хэрэгжүүлнэ.</p>
-          <span class="muted">Тун удахгүй</span>
+          <h3 data-en="Learning to open an online store">Онлайн дэлгүүр нээхээр суралцаж байна</h3>
+          <p data-en="No experience yet, but I am learning about sourcing goods and selling online, and will launch my first project.">Одоогоор туршлагагүй ч бараа нийлүүлэх, онлайнаар борлуулах чиглэлээр суралцаж, анхны төслөө хэрэгжүүлнэ.</p>
+          <span class="muted" data-en="Coming soon">Тун удахгүй</span>
         </article>
       </div>
     </div>
   </section>
-<!-- CONTACT: its own screen, the whole portrait (uncropped) beside the words and the button, at the client's ask -->
+<!-- CONTACT: its own screen, a message form (saved to Supabase) and the links, the whole portrait beside them -->
 <section class="section contact" id="contact" aria-labelledby="close-h">
   <div class="wrap">
     <div class="grid grid--top contact__grid">
       <div class="span-6 stack-6">
-        <h2 id="close-h">Боргилтой холбогдох</h2>
-        <p class="t-lead measure">Волейбол, сургууль эсвэл хамтын ажлын талаар имэйлээр бичээрэй.</p>
-        <div class="btn-row"><a class="btn btn--primary" href="mailto:borgilbadrakh882@gmail.com">Имэйл бичих<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a><a class="btn btn--secondary" href="https://github.com/Aether656" target="_blank" rel="noopener">GitHub-ийг үзэх</a><a class="btn btn--secondary" href="https://www.instagram.com/aether_solace_/" target="_blank" rel="noopener">Instagram-ийг үзэх</a></div>
+        <h2 id="close-h" data-en="Contact Borgil">Боргилтой холбогдох</h2>
+        <p class="t-lead measure" data-en="Write to me about volleyball, school or working together.">Волейбол, сургууль эсвэл хамтын ажлын талаар бичээрэй.</p>
+        <form class="form" data-contact novalidate>
+          <label class="field"><span data-en="Name">Нэр</span><input name="name" type="text" autocomplete="name" required maxlength="120"></label>
+          <label class="field"><span data-en="Email">Имэйл</span><input name="email" type="email" autocomplete="email" required maxlength="200"></label>
+          <label class="field field--full"><span data-en="Message">Мессеж</span><textarea name="message" required maxlength="4000" rows="4"></textarea></label>
+          <label class="form__hp" aria-hidden="true">Website<input name="website" type="text" tabindex="-1" autocomplete="off"></label>
+          <div class="btn-row">
+            <button class="btn btn--primary" type="submit"><span data-en="Send message">Мессеж илгээх</span><svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></button>
+            <a class="btn btn--secondary" href="https://github.com/Aether656" target="_blank" rel="noopener">GitHub</a>
+            <a class="btn btn--secondary" href="https://www.instagram.com/aether_solace_/" target="_blank" rel="noopener">Instagram</a>
+          </div>
+          <p class="form__status" role="status" aria-live="polite"></p>
+        </form>
         <ul class="rows contact__rows">
+          <li><span class="rows__name" data-en="Email">Имэйл</span><a class="rows__value link" href="mailto:borgilbadrakh882@gmail.com">borgilbadrakh882@gmail.com</a></li>
           <li><span class="rows__name">Instagram</span><a class="rows__value link" href="https://www.instagram.com/aether_solace_/" target="_blank" rel="noopener">@aether_solace_</a></li>
         </ul>
       </div>
-      <figure class="portrait-full span-4 start-9"><img src="assets/img/portrait.jpg" alt="Боргилын хөрөг зураг" loading="lazy" width="570" height="1000" data-source="client" data-subject="Боргилын хөрөг"></figure>
+      <figure class="portrait-full span-4 start-9"><img src="assets/img/portrait.jpg" alt="Боргилын хөрөг зураг" data-en-alt="Portrait of Borgil" loading="lazy" width="570" height="1000" data-source="client" data-subject="Боргилын хөрөг"></figure>
     </div>
   </div>
 </section>
 </main>
 
-<footer class="footer closing footer--links" aria-label="Сайтын холбоосууд">
+<footer class="footer closing footer--links" aria-label="Сайтын холбоосууд" data-en-label="Site links">
   <div class="wrap">
     <div class="closing__links">
       <div class="grid">
         <div class="span-4 stack-4">
-          <a class="nav__logo" href="#top"><span class="mark" data-mark="arc" aria-hidden="true"></span>Боргил</a>
-          <p class="footer__lede">Волейболчин, сурагч, вэб сурагч.</p>
+          <a class="nav__logo" href="#top"><span class="mark" data-mark="arc" aria-hidden="true"></span><span data-en="Borgil">Боргил</span></a>
+          <p class="footer__lede" data-en="Volleyball player, student, learning web.">Волейболчин, сурагч, вэб сурагч.</p>
         </div>
-        <div class="span-2 footer__col"><h4>Волейбол</h4><ul><li><a href="#volleyball">Зорилго</a></li><li><a href="#future">Ирээдүйн би</a></li></ul></div>
-        <div class="span-2 footer__col"><h4>Сургууль</h4><ul><li><a href="#study">Боловсрол ба хэл</a></li></ul></div>
-        <div class="span-2 footer__col"><h4>Төслүүд</h4><ul><li><a href="#web">Вэб төслүүд</a></li><li><a href="https://github.com/Aether656/borgil-cv" target="_blank" rel="noopener">Сайтын код</a></li></ul></div>
-        <div class="span-2 footer__col"><h4>Холбоо</h4><ul><li><a href="mailto:borgilbadrakh882@gmail.com">Имэйл</a></li><li><a href="https://github.com/Aether656" target="_blank" rel="noopener">GitHub</a></li><li><a href="https://www.instagram.com/aether_solace_/" target="_blank" rel="noopener">Instagram</a></li></ul></div>
+        <div class="span-2 footer__col"><h4 data-en="Volleyball">Волейбол</h4><ul><li><a href="#highlight" data-en="Highlights">Highlight</a></li><li><a href="#record" data-en="Record">Амжилт</a></li><li><a href="#training" data-en="Training">Бэлтгэл</a></li><li><a href="#future" data-en="Future me">Ирээдүйн би</a></li></ul></div>
+        <div class="span-2 footer__col"><h4 data-en="Team">Баг</h4><ul><li><a href="#team" data-en="My team">Багийнхан</a></li><li><a href="#coach" data-en="Coach's advice">Дасгалжуулагчийн үг</a></li></ul></div>
+        <div class="span-2 footer__col"><h4 data-en="More">Бусад</h4><ul><li><a href="#study" data-en="School">Сургууль</a></li><li><a href="#web" data-en="Projects">Төслүүд</a></li><li><a href="https://github.com/Aether656/borgil-cv" target="_blank" rel="noopener" data-en="Site code">Сайтын код</a></li></ul></div>
+        <div class="span-2 footer__col"><h4 data-en="Contact">Холбоо</h4><ul><li><a href="mailto:borgilbadrakh882@gmail.com" data-en="Email">Имэйл</a></li><li><a href="https://github.com/Aether656" target="_blank" rel="noopener">GitHub</a></li><li><a href="https://www.instagram.com/aether_solace_/" target="_blank" rel="noopener">Instagram</a></li></ul></div>
       </div>
       <div class="footer__legal">
-        <span>&copy; 2026 Боргил</span>
+        <span>&copy; 2026 <span data-en="Borgil">Боргил</span></span>
         <div class="socials"></div>
-        <span>Бүтээгдэхүүний нэр, логог эзэд нь эзэмшинэ.</span>
+        <span data-en="Product names and logos belong to their owners.">Бүтээгдэхүүний нэр, логог эзэд нь эзэмшинэ.</span>
       </div>
     </div>
   </div>
 </footer>
 
 <script>
+  /* MN / EN: every [data-en] swaps its text, [data-en-alt] its alt, [data-en-label] its aria-label; the choice is remembered */
+  (() => {
+    const btn = document.querySelector('[data-lang-toggle]');
+    const pairs = [['data-en', null], ['data-en-alt', 'alt'], ['data-en-label', 'aria-label']];
+    const keep = (el, attr) => attr ? el.getAttribute(attr) : el.innerHTML;
+    document.querySelectorAll('[data-en],[data-en-alt],[data-en-label]').forEach((el) => {
+      pairs.forEach(([key, attr]) => { if (el.hasAttribute(key)) el.setAttribute(key.replace('-en', '-mn'), keep(el, attr)); });
+    });
+    const set = (lang) => {
+      const from = lang === 'en' ? 'en' : 'mn';
+      pairs.forEach(([key, attr]) => {
+        document.querySelectorAll('[' + key + ']').forEach((el) => {
+          const v = el.getAttribute(key.replace('-en', '-' + from));
+          if (v === null) return;
+          if (attr) el.setAttribute(attr, v); else el.innerHTML = v;
+        });
+      });
+      document.documentElement.lang = from;
+      btn.textContent = from === 'en' ? 'MN' : 'EN';
+      btn.setAttribute('aria-label', from === 'en' ? 'Монгол хэл рүү шилжих' : 'Switch to English');
+      const st = document.querySelector('.form__status'); if (st) { st.textContent = ''; st.dataset.state = ''; }
+      try { localStorage.setItem('lang', from); } catch (e) {}
+    };
+    btn.addEventListener('click', () => set(document.documentElement.lang === 'en' ? 'mn' : 'en'));
+    let saved = null; try { saved = localStorage.getItem('lang'); } catch (e) {}
+    if (saved === 'en') set('en');
+    window.__lang = () => document.documentElement.lang;
+  })();
+
+  /* contact form: saves the message to Supabase (insert only; nobody can read it from the site) */
+  (() => {
+    const form = document.querySelector('[data-contact]'); if (!form) return;
+    const URL = 'https://szgcqzyiwtknfoplqssa.supabase.co/rest/v1/contact_messages';
+    const KEY = 'sb_publishable_R07FkHT-Kp4H-NSIrYkqWw_vcWfWV_a';
+    const status = form.querySelector('.form__status'), btn = form.querySelector('[type=submit]');
+    const t = {
+      mn: { empty: 'Нэр, имэйл, мессежээ бөглөнө үү.', mail: 'Имэйл хаягаа зөв бичнэ үү.', sending: 'Илгээж байна…', ok: 'Баярлалаа! Мессеж тань ирлээ.', err: 'Илгээж чадсангүй. borgilbadrakh882@gmail.com руу имэйлээр бичээрэй.' },
+      en: { empty: 'Please fill in your name, email and message.', mail: 'Please enter a valid email address.', sending: 'Sending…', ok: 'Thank you! Your message has arrived.', err: 'Could not send. Please email borgilbadrakh882@gmail.com instead.' }
+    };
+    const say = (k, state) => { status.textContent = t[document.documentElement.lang === 'en' ? 'en' : 'mn'][k]; status.dataset.state = state || ''; };
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const d = Object.fromEntries(new FormData(form));
+      if (d.website) return;
+      const name = (d.name || '').trim(), email = (d.email || '').trim(), message = (d.message || '').trim();
+      if (!name || !email || !message) return say('empty', 'err');
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return say('mail', 'err');
+      btn.disabled = true; say('sending');
+      try {
+        const r = await fetch(URL, { method: 'POST', headers: { apikey: KEY, Authorization: 'Bearer ' + KEY, 'Content-Type': 'application/json', Prefer: 'return=minimal' }, body: JSON.stringify({ name, email, message }) });
+        if (!r.ok) throw new Error(r.status);
+        form.reset(); say('ok', 'ok');
+      } catch (err) { say('err', 'err'); }
+      btn.disabled = false;
+    });
+  })();
+
   /* the plan deck: buttons, arrow keys and a swipe move one slide; nothing moves by itself */
   document.querySelectorAll('[data-deck]').forEach((deck) => {
     const track = deck.querySelector('.deck__track'), slides = [...track.children], n = slides.length;
@@ -344,6 +585,12 @@
     vp.addEventListener('pointerup', (e) => { if (x0 === null) return; const dx = e.clientX - x0; x0 = null; if (Math.abs(dx) > 48) go(i + (dx < 0 ? 1 : -1)); });
     go(0);
   });
+
+  /* visitor count: Vercel Web Analytics, only on the published site (the script exists only there) */
+  if (/\.vercel\.app$/.test(location.hostname)) {
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    const s = document.createElement('script'); s.defer = true; s.src = '/_vercel/insights/script.js'; document.head.appendChild(s);
+  }
 </script>
 <script type="module" src="assets/system.js"></script>
 <script type="module" src="assets/motion/motion.js"></script>
