@@ -1,54 +1,72 @@
 <!doctype html>
-<html lang="mn" data-type="service" data-radius="soft" data-buttons="block" data-motion>
+<html lang="mn" data-type="service" data-radius="round" data-buttons="pill" data-motion>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Боргил — волейболчин, шигшээ багийн холбогч болох зорилготой</title>
-<meta name="description" content="Боргил — 17 настай мэргэжлийн волейболчин. 38-р сургуулийн 12-р ангийн сурагч, шигшээ багийн холбогч болохоор бэлтгэж байна.">
+<meta name="description" content="Боргил — 17 настай мэргэжлийн волейболчин. 38&#8209;р сургуулийн 12-р ангийн сурагч, шигшээ багийн холбогч болохоор бэлтгэж байна.">
 <meta name="site-kind" content="other">
 <meta name="page-type" content="service">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230d7480'/><text x='50' y='69' font-size='58' text-anchor='middle' fill='white' font-family='Georgia,serif'>Б</text></svg>">
+<meta name="theme-color" content="#0a0d14">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='50' fill='%230a0d14'/><text x='50' y='67' font-size='54' text-anchor='middle' fill='white' font-family='sans-serif'>Б</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400..700&family=Libre+Franklin:wght@400..600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400..600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/system.css">
 <link rel="stylesheet" href="assets/ui/cards.css">
 <link rel="stylesheet" href="assets/motion/motion.css">
 <link rel="stylesheet" href="assets/layout/layout.css">
 <link rel="stylesheet" href="assets/icons/icon.css">
-<link rel="stylesheet" href="assets/diagrams/diagram.css">
 <style>
 :root {
-  --p-bg: #f7f9fa; --p-surface: #ecf0f2; --p-ink: #1f3038; --p-muted: #5d6b72;
-  --p-accent: #0d7480; --p-accent-ink: #ffffff; --p-action: #0d7480; --p-action-ink: #ffffff;
-  --p-inv-bg: #1f3038; --p-inv-surface: #2c3c44; --p-inv-ink: #f7f9fa; --p-inv-muted: #9ea7ab;
-  --p-inv-accent: #f7f9fa; --p-inv-accent-ink: #1f3038; --p-inv-action: #f7f9fa; --p-inv-action-ink: #1f3038;
-  --font-display: "Source Serif 4", Georgia, serif;
-  --font-text: "Libre Franklin", system-ui, sans-serif;
+  --p-bg: #0a0d14; --p-surface: #131824; --p-ink: #e9edf3; --p-muted: #8891a1;
+  --p-accent: #5ab9fc; --p-accent-ink: #0a0d14; --p-action: #5ab9fc; --p-action-ink: #0a0d14;
+  --p-inv-bg: #e9edf3; --p-inv-surface: #d7dbe1; --p-inv-ink: #0a0d14; --p-inv-muted: #54575f;
+  --p-inv-accent: #0a0d14; --p-inv-accent-ink: #e9edf3; --p-inv-action: #0a0d14; --p-inv-action-ink: #e9edf3;
+  --font-display: "Geist", system-ui, sans-serif;
+  --font-text: "Geist", system-ui, sans-serif;
   --display-weight: 400;
-  --display-tracking: -0.02em;
-  --display-tracking-xl: -0.026em;
+  --display-tracking: -0.035em;
+  --display-tracking-xl: -0.045em;
 }
 </style>
-<!-- page CSS: the one type moment and the icon row inside the web card -->
+<!-- page CSS: photo crops, the icon panel inside the web cards -->
 <style>
-  #volleyball .panel { --p-h: 420px; height: var(--p-h); background: var(--surface); }
-  @media (max-width: 1023px) { #volleyball .panel { --p-h: 340px; } }
-  .card .tools.panel { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: var(--s-4); height: var(--p-h, 240px); margin-bottom: var(--s-4); background: var(--surface); border-radius: var(--r-md); }
+  html { color-scheme: dark; }
+  .hero-visual .frame__img { object-position: 50% 42%; }
+  #volleyball .frame { --ratio: 133%; }
+  #volleyball .frame__img { object-position: 58% 50%; }
+  .photo-pair { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-5); }
+  @media (max-width: 639px) { .photo-pair { gap: var(--s-3); } }
+  #volleyball .frame:last-child .frame__img { object-position: 50% 45%; }
+  #study .frame { --ratio: 75%; }
+  #study .frame__img { object-position: 50% 50%; }
+  /* the whole portrait: the frame takes the photograph's own ratio, its height capped by the screen */
+  /* the whole portrait, no box around it: the photograph alone with the page radius */
+  .portrait-full { margin: 0; display: flex; justify-content: flex-end; }
+  .portrait-full img { display: block; width: 100%; height: auto; aspect-ratio: 570 / 1000; object-fit: cover; border-radius: var(--r-lg); transition: transform .5s cubic-bezier(.2,.7,.2,1); }
+  .portrait-full:hover img { transform: scale(1.02); }
+  @media (max-width: 1023px) { .portrait-full { justify-content: flex-start; } .portrait-full img { width: auto; max-width: 100%; height: min(62svh, 640px); } }
+  @media (min-width: 1024px) { .portrait-full img { width: auto; max-width: 100%; height: min(calc(100svh - var(--padt) - var(--padb)), 708px); } }
+  .contact__rows { max-width: 520px; }
+  .btn-row { flex-wrap: wrap; }
+  footer.footer--links { height: auto; min-height: 0; padding-top: var(--s-8); padding-bottom: var(--s-7); }
+  .footer--links > .wrap { display: block; }
+  .card .tools.panel { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: var(--s-4); flex: none; height: var(--p-h, 200px); min-height: 0; margin-bottom: var(--s-4); background: var(--surface); border-radius: var(--r-md); }
   .tools.panel .ic-tile { --tile: 72px; }
   .tools.panel .ic-svg { --ic-s: 40px; color: var(--accent); }
-  #web { --p-h: 260px; }
-  .hero--statement h1 { max-width: 28ch; }
-  #study .rows > li { padding-block: var(--s-6); }
-  #study .rows > li:first-child { padding-top: 0; }
-  @media (max-width: 639px) { #study .rows > li { padding-block: var(--s-4); } .hero--statement { --ly-h1-quiet: 31px; } #volleyball .panel { --p-h: 260px; } #web { --p-h: 150px; } }
+  #web .panel { --p-h: 180px; }
+  @media (max-width: 639px) { #web .panel { --p-h: 150px; } #study .frame { --ratio: 60%; } }
+  /* a short window (a laptop, the browser with a toolbar): sections grow with their content instead of running into the next one */
+  main > section:not(.hero), footer.closing:not(.footer--links) { height: auto; min-height: calc(var(--h, 1) * 100svh); }
+  @media (max-height: 800px) and (min-width: 1024px) { #web .panel { --p-h: 112px; } #volleyball .frame { --ratio: 110%; } }
 </style>
 </head>
 <body>
 <!-- type: service (хувийн танилцуулга: тамирчин, сурагч)
-     deal: hero statement (dealt photo, re-dealt: no photograph yet), nav nav-centre (nav-mega re-dealt: no picture card),
-     close close-type, footer footer-columns (footer-visit re-dealt: no door), rhythm surface-pairs, buttons block, mark arc,
-     palette cool-white-slate, pairing source-serif (Cyrillic), grounds none, moments none -->
+     deal: hero split (film dealt; re-dealt: no film or wide photograph), nav nav-centre, close close-photo,
+     footer footer-columns, rhythm space, buttons pill, mark arc,
+     palette blue-black-cornflower (the client asked for a black page with white type), pairing geist (Cyrillic), grounds none, moments none -->
 
 <header class="nav nav--centre">
   <div class="wrap nav__bar">
@@ -68,27 +86,29 @@
 </header>
 
 <main id="top">
-  <!-- HERO: statement on the page ground. A portrait or match photograph replaces this later (hero photo). -->
-  <section class="hero hero--statement" aria-labelledby="hero-h">
-    <div class="wrap"><div class="hero-text hero__in">
-      <div>
-        <h1 id="hero-h">Боргил, 17 настай мэргэжлийн волейболчин</h1>
-        <p class="hero__lead">Монголын шигшээ багийн холбогч болохоор бэлтгэж байна. 38-р сургуулийн төгсөх ангийн сурагч, монгол, англи, орос гурван хэлээр ярьдаг.</p>
-        <div class="btn-row">
-          <a class="btn btn--primary" href="mailto:borgilbadrakh882@gmail.com">Имэйл бичих<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
-          <a class="btn btn--secondary" href="#volleyball">Зорилгыг унших</a>
+  <section class="hero hero--split" aria-labelledby="hero-h">
+    <div class="wrap">
+      <div class="hero-text grid hero-split">
+        <div class="hero-copy span-6">
+          <h1 id="hero-h">Боргил, 17 настай мэргэжлийн волейболчин</h1>
+          <p class="t-lead">Монголын шигшээ багийн холбогч болохоор бэлтгэж байна. 38&#8209;р сургуулийн төгсөх ангийн сурагч, монгол, англи, орос гурван хэлээр ярьдаг.</p>
+          <div class="btn-row">
+            <a class="btn btn--primary" href="mailto:borgilbadrakh882@gmail.com">Имэйл бичих<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
+            <a class="btn btn--secondary" href="#volleyball">Зорилгыг унших</a>
+          </div>
+          <dl class="hero-facts">
+            <div><dt>Байрлал</dt><dd>Холбогч</dd></div>
+            <div><dt>Сургууль</dt><dd>38&#8209;р сургууль, 12-3</dd></div>
+            <div><dt>Англи хэл</dt><dd>B1 түвшин</dd></div>
+          </dl>
+        </div>
+        <div class="hero-visual frame frame--photo span-6 start-7">
+          <img class="frame__img" src="assets/img/match-set.jpg" alt="Боргил тоглолтын үеэр бөмбөг холбож байна" fetchpriority="high" width="946" height="2046" data-source="client" data-subject="Боргил талбай дээр бөмбөг холбож байна">
         </div>
       </div>
-      <dl class="hero__facts">
-        <div><dt>Нас</dt><dd>17</dd></div>
-        <div><dt>Зорилго</dt><dd>Шигшээ багийн холбогч</dd></div>
-        <div><dt>Сургууль</dt><dd>38-р сургууль, 12-3</dd></div>
-        <div><dt>Англи хэл</dt><dd>B1 түвшин</dd></div>
-      </dl>
-    </div></div>
+    </div>
   </section>
 
-  <!-- VOLLEYBALL: the story and the facts left, the path to the national team as the one still diagram right (6/6) -->
   <section class="section" id="volleyball" aria-labelledby="volleyball-h">
     <div class="wrap">
       <div class="section-head"><h2 id="volleyball-h">Волейбол ба шигшээ багийн зорилго</h2></div>
@@ -97,43 +117,51 @@
           <p class="t-lead measure">Мэргэжлийн түвшинд волейбол тоглодог. Холбогч бол багийн довтолгоог зохион байгуулдаг тоглогч бөгөөд би энэ байрлалаар шигшээ багт тоглохыг зорьж байна.</p>
           <ul class="rows">
             <li><span class="rows__name">Спорт</span><span class="rows__value">Волейбол, мэргэжлийн түвшин</span></li>
-            <li><span class="rows__name">Байрлал</span><span class="rows__value">Холбогч</span></li>
+            <li><span class="rows__name">Зорилго</span><span class="rows__value">Монголын шигшээ баг</span></li>
             <li><span class="rows__name">Чанар</span><span class="rows__value">Багаар ажиллах, сахилга бат</span></li>
           </ul>
         </div>
-        <div class="panel span-6 start-7"><div class="dg" data-diagram data-dg-still><script type="application/json">{"layout":"timeline","alt":"Одоо мэргэжлийн волейболчин, холбогчийн байрлалд бэлтгэж, Монголын шигшээ багт тоглох зорилготой.","ground":"none","motion":{"pulse":"none"},"steps":[{"label":"Волейболчин","sub":"Одоо","icon":"ui:volleyball"},{"label":"Холбогч","sub":"Одоо","icon":"ui:dumbbell"},{"label":"Шигшээ баг","sub":"Зорилго","icon":"ui:trophy"}]}</script></div></div>
+        <div class="photo-pair span-6 start-7">
+        <div class="frame frame--photo">
+          <img class="frame__img" src="assets/img/match-receive.jpg" alt="Боргил бэлтгэлийн үеэр бөмбөг хүлээн авч байна" loading="lazy" width="1320" height="1192" data-source="client" data-subject="Боргил бэлтгэл дээр бөмбөг хүлээн авч байна">
+        </div>
+        <div class="frame frame--photo">
+          <img class="frame__img" src="assets/img/selfie-jersey.jpg" alt="Боргил багийнхаа өмсгөлтэй" loading="lazy" width="1536" height="2048" data-source="client" data-subject="Боргил багийн өмсгөлтэй">
+        </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- STUDY: school and languages, two ruled groups on the surface band (rhythm surface-pairs) -->
-  <section class="section ground-surface" id="study" aria-labelledby="study-h">
+  <section class="section" id="study" aria-labelledby="study-h">
     <div class="wrap">
       <div class="section-head">
         <h2 id="study-h">Сургууль ба гурван хэл</h2>
         <p>Спортоос гадна хичээлээ хийж, англи хэлээ ахиулж байна.</p>
       </div>
       <div class="grid grid--top">
-        <div class="span-6 stack-4">
+        <div class="span-4 stack-4">
           <p class="t-label">Боловсрол</p>
           <ul class="rows">
-            <li><span class="rows__name">38-р сургууль</span><span class="rows__value">12-3 анги, одоо</span><p class="muted">Ерөнхий боловсролын сургуулийн төгсөх анги.</p></li>
-            <li><span class="rows__name">Absolute сургалтын төв</span><span class="rows__value">Англи хэл, одоо</span><p class="muted">Англи хэлний сургалтад явдаг.</p></li>
+            <li><span class="rows__name">38&#8209;р сургууль</span><span class="rows__value">12-3 анги</span><p class="muted">Монгол-Германы хамтарсан 38 дугаар сургуулийн төгсөх анги.</p></li>
+            <li><span class="rows__name">Absolute</span><span class="rows__value">Англи хэл</span><p class="muted">Англи хэлний сургалтын төвд суралцаж байна.</p></li>
           </ul>
         </div>
-        <div class="span-6 start-7 stack-4">
+        <div class="span-4 stack-4">
           <p class="t-label">Хэл</p>
           <ul class="rows">
-            <li><span class="rows__name">Монгол хэл</span><span class="rows__value">Төрөлх</span><p class="muted">Гэр бүл, сургууль, багтаа ярьдаг хэл.</p></li>
-            <li><span class="rows__name">Англи хэл</span><span class="rows__value">B1</span><p class="muted">Дунд түвшин, цааш ахиулахаар суралцаж байна.</p></li>
-            <li><span class="rows__name">Орос хэл</span><span class="rows__value">Ярьдаг</span><p class="muted">Ярьж, ойлгодог.</p></li>
+            <li><span class="rows__name">Монгол хэл</span><span class="rows__value">Төрөлх</span></li>
+            <li><span class="rows__name">Англи хэл</span><span class="rows__value">B1</span></li>
+            <li><span class="rows__name">Орос хэл</span><span class="rows__value">Ярьдаг</span></li>
           </ul>
+        </div>
+        <div class="frame frame--photo span-4">
+          <img class="frame__img" src="assets/img/school-38.jpg" alt="Монгол-Германы хамтарсан 38 дугаар сургуулийн байр" loading="lazy" width="516" height="387" data-source="client" data-subject="38 дугаар сургуулийн байр">
         </div>
       </div>
     </div>
   </section>
 
-  <!-- WEB: two cards, the tools as their real icons -->
   <section class="section" id="web" aria-labelledby="web-h" style="--hm: 2">
     <div class="wrap">
       <div class="section-head">
@@ -164,17 +192,27 @@
       </div>
     </div>
   </section>
+<!-- CONTACT: its own screen, the whole portrait (uncropped) beside the words and the button, at the client's ask -->
+<section class="section contact" id="contact" aria-labelledby="close-h">
+  <div class="wrap">
+    <div class="grid grid--top contact__grid">
+      <div class="span-6 stack-6">
+        <h2 id="close-h">Боргилтой холбогдох</h2>
+        <p class="t-lead measure">Волейбол, сургууль эсвэл хамтын ажлын талаар имэйлээр бичээрэй.</p>
+        <div class="btn-row"><a class="btn btn--primary" href="mailto:borgilbadrakh882@gmail.com">Имэйл бичих<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a><a class="btn btn--secondary" href="https://github.com/Aether656" target="_blank" rel="noopener">GitHub-ийг үзэх</a><a class="btn btn--secondary" href="https://www.instagram.com/aether_solace_/" target="_blank" rel="noopener">Instagram-ийг үзэх</a></div>
+        <ul class="rows contact__rows">
+          <li><span class="rows__name">Утас</span><a class="rows__value link" href="tel:+97699614142">9961 4142</a></li>
+          <li><span class="rows__name">Instagram</span><a class="rows__value link" href="https://www.instagram.com/aether_solace_/" target="_blank" rel="noopener">@aether_solace_</a></li>
+        </ul>
+      </div>
+      <figure class="portrait-full span-4 start-9"><img src="assets/img/portrait.jpg" alt="Боргилын хөрөг зураг" loading="lazy" width="570" height="1000" data-source="client" data-subject="Боргилын хөрөг"></figure>
+    </div>
+  </div>
+</section>
 </main>
 
-<footer class="footer closing" id="contact" aria-labelledby="close-h">
+<footer class="footer closing footer--links" aria-label="Сайтын холбоосууд">
   <div class="wrap">
-    <div class="closing__cta close--type">
-      <div class="section-head">
-        <h2 id="close-h">Боргилтой холбогдох</h2>
-        <p>Волейбол, сургууль эсвэл хамтын ажлын талаар имэйлээр бичээрэй.</p>
-      </div>
-      <a class="btn btn--primary btn--xl btn--wide" href="mailto:borgilbadrakh882@gmail.com">Имэйл бичих<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
-    </div>
     <div class="closing__links">
       <div class="grid">
         <div class="span-4 stack-4">
@@ -184,10 +222,10 @@
         <div class="span-2 footer__col"><h4>Волейбол</h4><ul><li><a href="#volleyball">Зорилго</a></li></ul></div>
         <div class="span-2 footer__col"><h4>Сургууль</h4><ul><li><a href="#study">Боловсрол ба хэл</a></li></ul></div>
         <div class="span-2 footer__col"><h4>Төслүүд</h4><ul><li><a href="#web">Вэб төслүүд</a></li><li><a href="https://github.com/Aether656/borgil-cv" target="_blank" rel="noopener">Сайтын код</a></li></ul></div>
-        <div class="span-2 footer__col"><h4>Холбоо</h4><ul><li><a href="mailto:borgilbadrakh882@gmail.com">Имэйл</a></li><li><a href="https://github.com/Aether656" target="_blank" rel="noopener">GitHub</a></li></ul></div>
+        <div class="span-2 footer__col"><h4>Холбоо</h4><ul><li><a href="mailto:borgilbadrakh882@gmail.com">Имэйл</a></li><li><a href="https://github.com/Aether656" target="_blank" rel="noopener">GitHub</a></li><li><a href="https://www.instagram.com/aether_solace_/" target="_blank" rel="noopener">Instagram</a></li><li><a href="tel:+97699614142">9961 4142</a></li></ul></div>
       </div>
       <div class="footer__legal">
-        <span>&copy; <span id="year">2026</span> Боргил</span>
+        <span>&copy; 2026 Боргил</span>
         <div class="socials"></div>
         <span>Бүтээгдэхүүний нэр, логог эзэд нь эзэмшинэ.</span>
       </div>
@@ -198,6 +236,5 @@
 <script type="module" src="assets/system.js"></script>
 <script type="module" src="assets/motion/motion.js"></script>
 <script type="module" src="assets/layout/layout.js"></script>
-<script type="module" src="assets/diagrams/mount.js"></script>
 </body>
 </html>
