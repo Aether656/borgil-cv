@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="mn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Боргил — Волейболчин</title>
+  <meta name="description" content="Боргил — 17 настай мэргэжлийн волейболчин. Шигшээ багийн холбогч болох зорилготой.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%234f46e5'/><text x='50' y='68' font-size='56' text-anchor='middle' fill='white' font-family='sans-serif'>Б</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script>
+    // Хуудас ачаалахаас өмнө өнгөний горимыг тохируулна (анивчихгүйн тулд)
+    try {
+      const saved = localStorage.getItem('theme');
+      if (saved) document.documentElement.dataset.theme = saved;
+    } catch (e) {}
+  </script>
+</head>
+<body>
+
+  <!-- ===== Navigation ===== -->
+  <header class="nav">
+    <div class="container nav__inner">
+      <a href="#top" class="nav__logo">Боргил<span>.</span></a>
+      <nav class="nav__links" id="navLinks">
+        <a href="#about">Миний тухай</a>
+        <a href="#skills">Ур чадвар</a>
+        <a href="#experience">Туршлага</a>
+        <a href="#projects">Төслүүд</a>
+        <a href="#contact">Холбоо барих</a>
+      </nav>
+      <div class="nav__actions">
+        <button class="icon-btn" id="themeToggle" aria-label="Өнгөний горим солих">◐</button>
+        <button class="icon-btn nav__burger" id="navBurger" aria-label="Цэс нээх" aria-expanded="false">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ===== Hero ===== -->
+    <section class="hero container">
+      <div class="hero__text reveal">
+        <p class="eyebrow">Сайн байна уу 👋, намайг</p>
+        <h1>Боргил гэдэг</h1>
+        <p class="hero__role"><strong>Мэргэжлийн волейболчин</strong> · 17 настай</p>
+        <p class="hero__lead">Шигшээ багийн холбогч болохыг зорьдог. Шинэ зүйл сурах дуртай, монгол, англи, орос хэлтэй.</p>
+        <div class="hero__buttons">
+          <a href="#contact" class="btn btn--primary">Холбоо барих</a>
+          <a href="https://github.com/Aether656" class="btn btn--ghost" target="_blank" rel="noopener">GitHub →</a>
+        </div>
+      </div>
+      <div class="hero__photo reveal">
+        <!-- Зураг нэмэхдээ: assets/profile.jpg хуулаад доорх div-г <img src="assets/profile.jpg" alt="Боргил"> болгоно -->
+        <div class="avatar">Б</div>
+      </div>
+    </section>
+
+    <!-- ===== About ===== -->
+    <section class="section container" id="about">
+      <h2 class="section__title reveal">Миний тухай</h2>
+      <div class="about reveal">
+        <p>Би 38-р сургуулийн 12-р ангийн сурагч, мэргэжлийн волейболчин. Ирээдүйд Монголын шигшээ багийн холбогч болох зорилготой. Спортоос гадна англи хэлээ сайжруулж, онлайн худалдаа болон вэб технологийн чиглэлээр суралцаж байна.</p>
+        <ul class="facts">
+          <li><span>🏐</span> Волейбол · холбогч болох зорилготой</li>
+          <li><span>🎓</span> 38-р сургууль, 12-3 анги</li>
+          <li><span>🗣️</span> Монгол, англи, орос хэл</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== Skills ===== -->
+    <section class="section container" id="skills">
+      <h2 class="section__title reveal">Ур чадвар</h2>
+      <div class="skills reveal">
+        <span class="chip">🏐 Волейбол</span>
+        <span class="chip">Багаар ажиллах</span>
+        <span class="chip">Сахилга бат</span>
+        <span class="chip">Англи хэл · B1</span>
+        <span class="chip">Орос хэл</span>
+        <span class="chip">Монгол хэл</span>
+        <span class="chip">AI / Vibe coding</span>
+        <span class="chip">HTML & CSS (суралцаж байна)</span>
+      </div>
+    </section>
+
+    <!-- ===== Experience & Education ===== -->
+    <section class="section container" id="experience">
+      <h2 class="section__title reveal">Туршлага ба боловсрол</h2>
+      <ol class="timeline">
+        <li class="timeline__item reveal">
+          <span class="timeline__date">Одоо</span>
+          <h3>Мэргэжлийн волейболчин</h3>
+          <p>Мэргэжлийн түвшинд волейбол тоглодог. Шигшээ багийн холбогч болох зорилготой.</p>
+        </li>
+        <li class="timeline__item reveal">
+          <span class="timeline__date">Одоо</span>
+          <h3>Англи хэл · Absolute сургалтын төв</h3>
+          <p>Англи хэлний B1 түвшинтэй, цааш ахиулахаар суралцаж байна.</p>
+        </li>
+        <li class="timeline__item reveal">
+          <span class="timeline__date">Одоо</span>
+          <h3>38-р сургууль · 12-3 анги</h3>
+          <p>Ерөнхий боловсролын сургуулийн төгсөх ангийн сурагч.</p>
+        </li>
+        <li class="timeline__item reveal">
+          <span class="timeline__date">Ирээдүйд</span>
+          <h3>Онлайн худалдаа</h3>
+          <p>Одоогоор туршлагагүй ч онлайнаар бараа нийлүүлж, борлуулах чиглэлээр сайн суралцана гэдэгтээ итгэлтэй байна.</p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ===== Projects ===== -->
+    <section class="section container" id="projects">
+      <h2 class="section__title reveal">Төслүүд</h2>
+      <div class="cards">
+        <article class="card reveal">
+          <div class="card__img">🌐</div>
+          <h3>Энэ CV вэбсайт</h3>
+          <p>HTML, CSS, JavaScript ашиглан Claude-тай хамт vibe coding-оор бүтээсэн анхны вэбсайт.</p>
+          <a href="https://github.com/Aether656" class="card__link" target="_blank" rel="noopener">GitHub дээр үзэх →</a>
+        </article>
+        <article class="card reveal">
+          <div class="card__img">🛒</div>
+          <h3>Онлайн дэлгүүр</h3>
+          <p>Удахгүй. Онлайн худалдааны чиглэлээр суралцаж, анхны төслөө хэрэгжүүлэхээр төлөвлөж байна.</p>
+          <span class="card__link">Тун удахгүй</span>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== Contact ===== -->
+    <section class="section container" id="contact">
+      <div class="contact reveal">
+        <h2>Холбоо барих</h2>
+        <p>Санал, асуулт байвал чөлөөтэй бичээрэй.</p>
+        <a href="mailto:borgilbadrakh882@gmail.com" class="btn btn--primary">borgilbadrakh882@gmail.com</a>
+        <div class="socials">
+          <a href="https://github.com/Aether656" target="_blank" rel="noopener">GitHub · Aether656</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">© <span id="year"></span> Боргил. Claude-тай хамт бүтээв.</div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
