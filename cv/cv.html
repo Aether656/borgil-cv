@@ -1,0 +1,136 @@
+<!doctype html>
+<!-- One-page A4 CV, the source of cv/borgil-cv-mn.pdf and cv/borgil-cv-en.pdf.
+     Open with ?lang=en for English. Rebuild the PDFs with cv/build.ps1 after editing. -->
+<html lang="mn">
+<head>
+<meta charset="utf-8">
+<title>Боргил — CV</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400..600&display=block" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: #fff; }
+  body { font: 400 10.5pt/1.45 "Geist", "Segoe UI", system-ui, sans-serif; color: #1a1f2b; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .page { width: 210mm; height: 297mm; display: grid; grid-template-columns: 64mm 1fr; overflow: hidden; }
+  aside { background: #0a0d14; color: #e9edf3; padding: 14mm 8mm 12mm 10mm; display: flex; flex-direction: column; gap: 7mm; }
+  aside img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 20%; border-radius: 4mm; display: block; }
+  aside h3 { margin: 0 0 2mm; font-size: 8pt; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #5ab9fc; }
+  aside dl { margin: 0; display: grid; gap: 2.2mm; }
+  aside dt { font-size: 8pt; color: #8891a1; }
+  aside dd { margin: 0; font-size: 10pt; }
+  aside .big dd { font-size: 15pt; font-weight: 500; letter-spacing: -.01em; }
+  aside .big { grid-template-columns: 1fr 1fr; gap: 3mm 2mm; }
+  aside a { color: #e9edf3; text-decoration: none; }
+  aside .mail { font-size: 8.6pt; white-space: nowrap; letter-spacing: -.01em; }
+  main { padding: 14mm 12mm 12mm 11mm; display: flex; flex-direction: column; gap: 6mm; }
+  header h1 { margin: 0; font-size: 30pt; line-height: 1; font-weight: 500; letter-spacing: -.035em; color: #0a0d14; }
+  header p { margin: 2.5mm 0 0; font-size: 12pt; color: #3a4252; }
+  section h2 { margin: 0 0 2.5mm; padding-bottom: 1.5mm; border-bottom: .3mm solid #d6dbe3; font-size: 8.5pt; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #0a6fb8; }
+  section p { margin: 0; }
+  .item { display: grid; grid-template-columns: 1fr auto; gap: 0 4mm; margin-bottom: 2.5mm; }
+  .item b { font-weight: 600; color: #0a0d14; }
+  .item > span { color: #5b6475; font-variant-numeric: tabular-nums; }
+  .item p { grid-column: 1 / -1; color: #3a4252; }
+  ol, ul { margin: 0; padding-left: 4.5mm; display: grid; gap: 1.2mm; }
+  .steps li::marker { color: #0a6fb8; font-weight: 600; }
+  .week { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2mm; }
+  .week div { padding: 2.5mm; border-radius: 2mm; background: #f1f4f8; }
+  .week b { display: block; font-size: 8pt; color: #5b6475; font-weight: 500; }
+  .week i { font-style: normal; font-size: 9pt; color: #0a6fb8; font-variant-numeric: tabular-nums; }
+  .muted { color: #5b6475; }
+  [data-lang="en"] .mn, [data-lang="mn"] .en { display: none; }
+</style>
+</head>
+<body data-lang="mn">
+<div class="page">
+  <aside>
+    <img src="../assets/img/portrait.jpg" alt="">
+    <div>
+      <h3><span class="mn">Тамирчны үзүүлэлт</span><span class="en">Athlete profile</span></h3>
+      <dl class="big">
+        <div><dt><span class="mn">Өндөр</span><span class="en">Height</span></dt><dd>170 <span class="mn">см</span><span class="en">cm</span></dd></div>
+        <div><dt><span class="mn">Үсрэлтийн өндөр</span><span class="en">Jump reach</span></dt><dd>293 <span class="mn">см</span><span class="en">cm</span></dd></div>
+        <div><dt><span class="mn">Тоглодог гар</span><span class="en">Dominant hand</span></dt><dd><span class="mn">Зүүн</span><span class="en">Left</span></dd></div>
+        <div><dt><span class="mn">Байрлал</span><span class="en">Position</span></dt><dd><span class="mn">Холбогч</span><span class="en">Setter</span></dd></div>
+      </dl>
+    </div>
+    <div>
+      <h3><span class="mn">Холбоо барих</span><span class="en">Contact</span></h3>
+      <dl>
+        <div><dt><span class="mn">Имэйл</span><span class="en">Email</span></dt><dd class="mail"><a href="mailto:borgilbadrakh882@gmail.com">borgilbadrakh882@gmail.com</a></dd></div>
+        <div><dt>Instagram</dt><dd><a href="https://www.instagram.com/aether_solace_/">@aether_solace_</a></dd></div>
+        <div><dt>GitHub</dt><dd><a href="https://github.com/Aether656">github.com/Aether656</a></dd></div>
+        <div><dt><span class="mn">Вэбсайт</span><span class="en">Website</span></dt><dd><a href="https://borgil-cv.vercel.app">borgil-cv.vercel.app</a></dd></div>
+      </dl>
+    </div>
+    <div>
+      <h3><span class="mn">Хэл</span><span class="en">Languages</span></h3>
+      <dl>
+        <div><dt><span class="mn">Англи хэл</span><span class="en">English</span></dt><dd>B1</dd></div>
+        <div><dt><span class="mn">Орос хэл</span><span class="en">Russian</span></dt><dd><span class="mn">Ярьдаг</span><span class="en">Conversational</span></dd></div>
+      </dl>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <h1><span class="mn">Боргил</span><span class="en">Borgil</span></h1>
+      <p><span class="mn">17 настай волейболчин, холбогч · Darkhan Moguls клуб</span><span class="en">17-year-old volleyball setter · Darkhan Moguls club</span></p>
+    </header>
+
+    <section>
+      <h2><span class="mn">Товч танилцуулга</span><span class="en">Profile</span></h2>
+      <p class="mn">Darkhan Moguls клубт гүнзгий түвшний бэлтгэлд явдаг холбогч. Волейболоор тууштай хичээллэж, тасралтгүй бэлтгэлээ хийж Монголын шигшээ багт тоглох зорилготой. Багаар ажиллах чадвартай, сахилга баттай.</p>
+      <p class="en">A setter training in the advanced group at Darkhan Moguls club. I train steadily and without breaks, with the goal of playing for Mongolia's national team. A disciplined team player.</p>
+    </section>
+
+    <section>
+      <h2><span class="mn">Тэмцээний амжилт</span><span class="en">Competition record</span></h2>
+      <div class="item"><b><span class="mn">Darkhan Moguls клубийн салбар хоорондын тэмцээн</span><span class="en">Darkhan Moguls inter-branch tournament</span></b><span>2026</span><p><span class="mn">2&#8209;р байр, мөнгөн медаль</span><span class="en">2nd place, silver medal</span></p></div>
+      <div class="item"><b><span class="mn">Darkhan Moguls клубийн салбар хоорондын тэмцээн</span><span class="en">Darkhan Moguls inter-branch tournament</span></b><span>2024</span><p><span class="mn">2&#8209;р байр, мөнгөн медаль</span><span class="en">2nd place, silver medal</span></p></div>
+    </section>
+
+    <section>
+      <h2><span class="mn">Зуны эрчимжүүлсэн бэлтгэл</span><span class="en">Summer intensive training</span></h2>
+      <div class="week">
+        <div><b><span class="mn">Даваа</span><span class="en">Monday</span></b><span class="mn">Хүчний бэлтгэл</span><span class="en">Strength</span><br><i>11:00–13:00</i></div>
+        <div><b><span class="mn">Мягмар</span><span class="en">Tuesday</span></b><span class="mn">Хүчний бэлтгэл</span><span class="en">Strength</span><br><i>11:00–13:00</i></div>
+        <div><b><span class="mn">Лхагва</span><span class="en">Wednesday</span></b><span class="mn">Хүчний бэлтгэл</span><span class="en">Strength</span><br><i>11:00–13:00</i></div>
+        <div><b><span class="mn">Пүрэв</span><span class="en">Thursday</span></b><span class="mn">Салбар хоорондын тоглолт</span><span class="en">Inter-branch match</span></div>
+      </div>
+      <p class="muted" style="margin-top:2mm"><span class="mn">Сар бүр салбар хоорондын тэмцээн.</span><span class="en">An inter-branch tournament every month.</span></p>
+    </section>
+
+    <section>
+      <h2><span class="mn">Зорилгодоо хүрэх төлөвлөгөө</span><span class="en">Plan to reach the goal</span></h2>
+      <ol class="steps">
+        <li><span class="mn">Клубийн холбогч болох</span><span class="en">Become the club's setter</span></li>
+        <li><span class="mn">Клубийн багтаа орж амжилттай тоглох</span><span class="en">Make the club team and play well</span></li>
+        <li><span class="mn">Darkhan Moguls-ийн Дээд лигийн багт орж, лигтээ амжилт үзүүлэх</span><span class="en">Join the Darkhan Moguls Premier League team and succeed in the league</span></li>
+        <li><span class="mn">Монголын шигшээ багт дуудагдах</span><span class="en">Get called up to Mongolia's national team</span></li>
+      </ol>
+    </section>
+
+    <section>
+      <h2><span class="mn">Боловсрол</span><span class="en">Education</span></h2>
+      <div class="item"><b><span class="mn">Монгол-Германы хамтарсан 38 дугаар сургууль</span><span class="en">Mongolian-German joint School No. 38</span></b><span><span class="mn">12 дугаар анги</span><span class="en">12th grade</span></span><p><span class="mn">Төгсөх анги</span><span class="en">Final year</span></p></div>
+      <div class="item"><b>Absolute</b><span><span class="mn">Англи хэл</span><span class="en">English</span></span><p><span class="mn">Англи хэлний сургалтын төв</span><span class="en">English language centre</span></p></div>
+    </section>
+
+    <section>
+      <h2><span class="mn">Бусад</span><span class="en">Other</span></h2>
+      <ul>
+        <li><span class="mn">Энэ CV вэбсайтыг HTML, CSS, JavaScript ашиглан Claude-тай хамт бүтээсэн.</span><span class="en">Built my CV website with HTML, CSS and JavaScript together with Claude.</span></li>
+        <li><span class="mn">Онлайн худалдааны чиглэлээр суралцаж байна.</span><span class="en">Learning about running an online store.</span></li>
+      </ul>
+    </section>
+  </main>
+</div>
+<script>
+  const en = new URLSearchParams(location.search).get('lang') === 'en';
+  if (en) { document.body.dataset.lang = 'en'; document.documentElement.lang = 'en'; document.title = 'Borgil — CV'; }
+</script>
+</body>
+</html>

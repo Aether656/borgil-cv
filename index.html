@@ -208,7 +208,7 @@
           <p class="t-lead" data-en="Training to become the setter for Mongolia's national team. A senior at School No. 38 who speaks English and Russian.">Монголын шигшээ багийн холбогч болохоор бэлтгэж байна. 38&#8209;р сургуулийн төгсөх ангийн сурагч, англи, орос хэлээр ярьдаг.</p>
           <div class="btn-row">
             <a class="btn btn--primary" href="#highlight"><span data-en="Watch the highlights">Highlight үзэх</span><svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
-            <a class="btn btn--secondary" href="#volleyball" data-en="Read my goal">Зорилгыг унших</a>
+            <a class="btn btn--secondary" href="cv/borgil-cv-mn.pdf" download data-cv><span data-en="Download CV (PDF)">CV татах (PDF)</span><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" style="margin-left:6px"><path d="M8 2v8m-3.5-3.5L8 10l3.5-3.5M3 13h10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
           </div>
           <dl class="hero-facts">
             <div><dt data-en="Position">Байрлал</dt><dd data-en="Setter">Холбогч</dd></div>
@@ -484,6 +484,7 @@
           <label class="form__hp" aria-hidden="true">Website<input name="website" type="text" tabindex="-1" autocomplete="off"></label>
           <div class="btn-row">
             <button class="btn btn--primary" type="submit"><span data-en="Send message">Мессеж илгээх</span><svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></button>
+            <a class="btn btn--secondary" href="cv/borgil-cv-mn.pdf" download data-cv><span data-en="CV (PDF)">CV (PDF)</span><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" style="margin-left:6px"><path d="M8 2v8m-3.5-3.5L8 10l3.5-3.5M3 13h10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
             <a class="btn btn--secondary" href="https://github.com/Aether656" target="_blank" rel="noopener">GitHub</a>
             <a class="btn btn--secondary" href="https://www.instagram.com/aether_solace_/" target="_blank" rel="noopener">Instagram</a>
           </div>
@@ -511,7 +512,7 @@
         <div class="span-2 footer__col"><h4 data-en="Volleyball">Волейбол</h4><ul><li><a href="#highlight" data-en="Highlights">Highlight</a></li><li><a href="#record" data-en="Record">Амжилт</a></li><li><a href="#training" data-en="Training">Бэлтгэл</a></li><li><a href="#future" data-en="Future me">Ирээдүйн би</a></li></ul></div>
         <div class="span-2 footer__col"><h4 data-en="Team">Баг</h4><ul><li><a href="#team" data-en="My team">Багийнхан</a></li><li><a href="#coach" data-en="Coach's advice">Дасгалжуулагчийн үг</a></li></ul></div>
         <div class="span-2 footer__col"><h4 data-en="More">Бусад</h4><ul><li><a href="#study" data-en="School">Сургууль</a></li><li><a href="#web" data-en="Projects">Төслүүд</a></li><li><a href="https://github.com/Aether656/borgil-cv" target="_blank" rel="noopener" data-en="Site code">Сайтын код</a></li></ul></div>
-        <div class="span-2 footer__col"><h4 data-en="Contact">Холбоо</h4><ul><li><a href="mailto:borgilbadrakh882@gmail.com" data-en="Email">Имэйл</a></li><li><a href="https://github.com/Aether656" target="_blank" rel="noopener">GitHub</a></li><li><a href="https://www.instagram.com/aether_solace_/" target="_blank" rel="noopener">Instagram</a></li></ul></div>
+        <div class="span-2 footer__col"><h4 data-en="Contact">Холбоо</h4><ul><li><a href="mailto:borgilbadrakh882@gmail.com" data-en="Email">Имэйл</a></li><li><a href="cv/borgil-cv-mn.pdf" download data-cv data-en="CV (PDF)">CV (PDF)</a></li><li><a href="https://github.com/Aether656" target="_blank" rel="noopener">GitHub</a></li><li><a href="https://www.instagram.com/aether_solace_/" target="_blank" rel="noopener">Instagram</a></li></ul></div>
       </div>
       <div class="footer__legal">
         <span>&copy; 2026 <span data-en="Borgil">Боргил</span></span>
@@ -541,6 +542,7 @@
         });
       });
       document.documentElement.lang = from;
+      document.querySelectorAll('[data-cv]').forEach((a) => { a.href = 'cv/borgil-cv-' + from + '.pdf'; });
       btn.textContent = from === 'en' ? 'MN' : 'EN';
       btn.setAttribute('aria-label', from === 'en' ? 'Монгол хэл рүү шилжих' : 'Switch to English');
       const st = document.querySelector('.form__status'); if (st) { st.textContent = ''; st.dataset.state = ''; }
