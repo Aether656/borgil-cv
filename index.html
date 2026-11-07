@@ -58,8 +58,35 @@
   #web .panel { --p-h: 180px; }
   @media (max-width: 639px) { #web .panel { --p-h: 150px; } #study .frame { --ratio: 60%; } }
   /* a short window (a laptop, the browser with a toolbar): sections grow with their content instead of running into the next one */
-  main > section:not(.hero), footer.closing:not(.footer--links) { height: auto; min-height: calc(var(--h, 1) * 100svh); }
+  main > section.section:not(.hero), footer.closing:not(.footer--links) { height: auto; min-height: calc(var(--h, 1) * 100svh); }
+  @media (max-width: 1023px) and (max-height: 760px) { main > section.hero { height: auto; min-height: 100svh; } main > section.hero .hero-visual { flex: none; height: 56vw; min-height: 240px; } }
   @media (max-height: 800px) and (min-width: 1024px) { #web .panel { --p-h: 112px; } #volleyball .frame { --ratio: 110%; } }
+  /* the plan deck (#future): one slide at a time, moved by the buttons, the arrow keys or a swipe */
+  .deck { --deck-h: 400px; outline: none; }
+  .deck:focus-visible { box-shadow: 0 0 0 2px var(--accent); border-radius: var(--r-lg); }
+  .deck__viewport { overflow: hidden; border-radius: var(--r-lg); background: var(--surface); touch-action: pan-y; }
+  .deck__track { display: flex; margin: 0; padding: 0; list-style: none; transition: transform .55s cubic-bezier(.2,.7,.2,1); }
+  .deck__slide { flex: 0 0 100%; height: var(--deck-h); display: grid; grid-template-columns: 1fr 1fr; }
+  .deck__text { padding: var(--s-8); display: flex; flex-direction: column; justify-content: flex-end; gap: var(--s-4); }
+  .deck__num { margin: 0; font-size: var(--t-label); font-weight: 500; color: var(--accent); }
+  .deck__title { margin: 0; font: var(--display-weight) clamp(28px, 2.4vw + 8px, 44px)/1.08 var(--font-display); letter-spacing: var(--display-tracking); }
+  .deck__body { margin: 0; color: var(--muted); max-width: 40ch; }
+  .deck__media { position: relative; overflow: hidden; }
+  .deck__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .deck__slide--cover .deck__media img { object-fit: contain; padding: var(--s-7); }
+  .deck__slide--goal .deck__media img { object-position: 45% 14%; }
+  .deck__bar { display: flex; align-items: center; gap: var(--s-4); margin-top: var(--s-5); }
+  .deck__btn { width: 44px; height: 44px; flex: none; display: grid; place-items: center; border-radius: 50%; border: 1px solid var(--line-strong, var(--line)); background: transparent; color: var(--ink); cursor: pointer; transition: transform .15s, background .15s; }
+  .deck__btn:hover { background: var(--surface); transform: translateY(-1px); }
+  .deck__btn:active { transform: scale(.96); }
+  .deck__btn:disabled { opacity: .35; cursor: default; transform: none; }
+  .deck__count { margin: 0; min-width: 48px; font-variant-numeric: tabular-nums; color: var(--muted); }
+  .deck__progress { flex: 1; height: 2px; background: var(--line); border-radius: 2px; overflow: hidden; }
+  .deck__progress > span { display: block; height: 100%; width: 20%; background: var(--accent); transition: width .55s cubic-bezier(.2,.7,.2,1); }
+  @media (max-width: 1023px) { .deck { --deck-h: 520px; } .deck__slide { grid-template-columns: 1fr; grid-template-rows: 1fr auto; } .deck__media { order: -1; } .deck__text { padding: var(--s-6); justify-content: flex-start; } }
+  @media (max-width: 639px) { .deck { --deck-h: 460px; } .deck__text { padding: var(--s-5); } }
+  @media (max-height: 800px) and (min-width: 1024px) { .deck { --deck-h: clamp(210px, 100svh - 510px, 400px); } .deck__text { padding: var(--s-6); } }
+  @media (prefers-reduced-motion: reduce) { .deck__track, .deck__progress > span { transition: none; } }
 </style>
 </head>
 <body>
@@ -73,6 +100,7 @@
     <a class="nav__logo" href="#top"><span class="mark" data-mark="arc" aria-hidden="true"></span>Боргил</a>
     <nav class="nav__links" aria-label="Үндсэн цэс">
       <div class="nav__item"><a class="nav__link" href="#volleyball">Волейбол</a></div>
+      <div class="nav__item"><a class="nav__link" href="#future">Ирээдүй</a></div>
       <div class="nav__item"><a class="nav__link" href="#study">Сургууль</a></div>
       <div class="nav__item"><a class="nav__link" href="#web">Төслүүд</a></div>
     </nav>
@@ -91,15 +119,15 @@
       <div class="hero-text grid hero-split">
         <div class="hero-copy span-6">
           <h1 id="hero-h">Боргил, 17 настай мэргэжлийн волейболчин</h1>
-          <p class="t-lead">Монголын шигшээ багийн холбогч болохоор бэлтгэж байна. 38&#8209;р сургуулийн төгсөх ангийн сурагч, монгол, англи, орос гурван хэлээр ярьдаг.</p>
+          <p class="t-lead">Монголын шигшээ багийн холбогч болохоор бэлтгэж байна. 38&#8209;р сургуулийн төгсөх ангийн сурагч, англи, орос хэлээр ярьдаг.</p>
           <div class="btn-row">
             <a class="btn btn--primary" href="mailto:borgilbadrakh882@gmail.com">Имэйл бичих<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
             <a class="btn btn--secondary" href="#volleyball">Зорилгыг унших</a>
           </div>
           <dl class="hero-facts">
             <div><dt>Байрлал</dt><dd>Холбогч</dd></div>
-            <div><dt>Сургууль</dt><dd>38&#8209;р сургууль, 12-3</dd></div>
-            <div><dt>Англи хэл</dt><dd>B1 түвшин</dd></div>
+            <div><dt>Сургууль</dt><dd>38&#8209;р сургууль, 12 дугаар анги</dd></div>
+            <div><dt>Клуб</dt><dd>Darkhan Moguls</dd></div>
           </dl>
         </div>
         <div class="hero-visual frame frame--photo span-6 start-7">
@@ -133,24 +161,85 @@
     </div>
   </section>
 
+  <!-- FUTURE: who Borgil is and his plan, the plan as a click-through slide deck (the client asked for a SlideShare-style deck; no autoplay) -->
+  <section class="section" id="future" aria-labelledby="future-h">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="future-h">Ирээдүйн би</h2>
+        <p class="measure">Намайг Боргил гэдэг. 17 настай, одоо 12&#8209;р ангид суралцаж байна. Darkhan Moguls клубт гүнзгий түвшний бэлтгэлд явдаг. Ирээдүйд волейболоор тууштай хичээллэж, тасралтгүй бэлтгэлээ хийж шигшээ багт тоглох зорилготой.</p>
+      </div>
+      <div class="deck" data-deck tabindex="0" aria-roledescription="carousel" aria-label="Зорилгодоо хүрэх төлөвлөгөө">
+        <div class="deck__viewport">
+          <ol class="deck__track">
+            <li class="deck__slide deck__slide--cover" aria-roledescription="slide" aria-label="1 / 5">
+              <div class="deck__text">
+                <p class="deck__num">Төлөвлөгөө</p>
+                <h3 class="deck__title">Зорилгодоо хүрэх төлөвлөгөө</h3>
+                <p class="deck__body">Darkhan Moguls клубээс эхэлж, алхам алхмаар Монголын шигшээ баг хүртэл.</p>
+              </div>
+              <div class="deck__media"><img src="assets/img/club-logo.png" alt="Darkhan Moguls клубийн лого" loading="lazy" data-source="client" data-subject="Darkhan Moguls клубийн лого"></div>
+            </li>
+            <li class="deck__slide" aria-roledescription="slide" aria-label="2 / 5">
+              <div class="deck__text">
+                <p class="deck__num">Алхам 01</p>
+                <h3 class="deck__title">Клубийн холбогч болох</h3>
+                <p class="deck__body">Багийн довтолгоог зохион байгуулдаг холбогчийн байрлалд бэлтгэлээ төвлөрүүлнэ.</p>
+              </div>
+              <div class="deck__media"><img src="assets/img/match-set.jpg" alt="Боргил бөмбөг холбож байна" loading="lazy" data-source="client" data-subject="Боргил бөмбөг холбож байна"></div>
+            </li>
+            <li class="deck__slide" aria-roledescription="slide" aria-label="3 / 5">
+              <div class="deck__text">
+                <p class="deck__num">Алхам 02</p>
+                <h3 class="deck__title">Клубийн багтаа орж амжилттай тоглох</h3>
+                <p class="deck__body">Клубийнхээ багт орж, тоглолт бүрт амжилттай тоглоно.</p>
+              </div>
+              <div class="deck__media"><img src="assets/img/match-receive.jpg" alt="Боргил бөмбөг хүлээн авч байна" loading="lazy" data-source="client" data-subject="Боргил бөмбөг хүлээн авч байна"></div>
+            </li>
+            <li class="deck__slide" aria-roledescription="slide" aria-label="4 / 5">
+              <div class="deck__text">
+                <p class="deck__num">Алхам 03</p>
+                <h3 class="deck__title">Darkhan Moguls-ийн Дээд лигийн багт орох</h3>
+                <p class="deck__body">Дээд лигийн багтаа тоглож, лигтээ амжилт үзүүлнэ.</p>
+              </div>
+              <div class="deck__media"><img src="assets/img/selfie-jersey.jpg" alt="Боргил Darkhan Moguls-ийн өмсгөлтэй" loading="lazy" data-source="client" data-subject="Боргил Darkhan Moguls-ийн өмсгөлтэй"></div>
+            </li>
+            <li class="deck__slide deck__slide--goal" aria-roledescription="slide" aria-label="5 / 5">
+              <div class="deck__text">
+                <p class="deck__num">Зорилго</p>
+                <h3 class="deck__title">Монголын шигшээ багт дуудагдах</h3>
+                <p class="deck__body">Лигт үзүүлсэн амжилтаараа шигшээ багт дуудагдаж, Монголын төлөө тоглоно.</p>
+              </div>
+              <div class="deck__media"><img src="assets/img/play.jpg" alt="Боргил талбай дээр тоглож байна" loading="lazy" data-source="client" data-subject="Боргил талбай дээр тоглож байна"></div>
+            </li>
+          </ol>
+        </div>
+        <div class="deck__bar">
+          <p class="deck__count" aria-live="polite"><span data-deck-now>1</span> / 5</p>
+          <div class="deck__progress" aria-hidden="true"><span data-deck-fill></span></div>
+          <button class="deck__btn" type="button" data-deck-prev aria-label="Өмнөх слайд"><svg viewBox="0 0 12 12" aria-hidden="true" width="14" height="14"><path d="M11 6H3M6.5 2.5 3 6l3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button class="deck__btn" type="button" data-deck-next aria-label="Дараагийн слайд"><svg viewBox="0 0 12 12" aria-hidden="true" width="14" height="14"><path d="M1 6h8M5.5 2.5 9 6l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="section" id="study" aria-labelledby="study-h">
     <div class="wrap">
       <div class="section-head">
-        <h2 id="study-h">Сургууль ба гурван хэл</h2>
+        <h2 id="study-h">Сургууль ба гадаад хэл</h2>
         <p>Спортоос гадна хичээлээ хийж, англи хэлээ ахиулж байна.</p>
       </div>
       <div class="grid grid--top">
         <div class="span-4 stack-4">
           <p class="t-label">Боловсрол</p>
           <ul class="rows">
-            <li><span class="rows__name">38&#8209;р сургууль</span><span class="rows__value">12-3 анги</span><p class="muted">Монгол-Германы хамтарсан 38 дугаар сургуулийн төгсөх анги.</p></li>
+            <li><span class="rows__name">38&#8209;р сургууль</span><span class="rows__value">12 дугаар анги</span><p class="muted">Монгол-Германы хамтарсан 38 дугаар сургуулийн төгсөх анги.</p></li>
             <li><span class="rows__name">Absolute</span><span class="rows__value">Англи хэл</span><p class="muted">Англи хэлний сургалтын төвд суралцаж байна.</p></li>
           </ul>
         </div>
         <div class="span-4 stack-4">
           <p class="t-label">Хэл</p>
           <ul class="rows">
-            <li><span class="rows__name">Монгол хэл</span><span class="rows__value">Төрөлх</span></li>
             <li><span class="rows__name">Англи хэл</span><span class="rows__value">B1</span></li>
             <li><span class="rows__name">Орос хэл</span><span class="rows__value">Ярьдаг</span></li>
           </ul>
@@ -201,7 +290,6 @@
         <p class="t-lead measure">Волейбол, сургууль эсвэл хамтын ажлын талаар имэйлээр бичээрэй.</p>
         <div class="btn-row"><a class="btn btn--primary" href="mailto:borgilbadrakh882@gmail.com">Имэйл бичих<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a><a class="btn btn--secondary" href="https://github.com/Aether656" target="_blank" rel="noopener">GitHub-ийг үзэх</a><a class="btn btn--secondary" href="https://www.instagram.com/aether_solace_/" target="_blank" rel="noopener">Instagram-ийг үзэх</a></div>
         <ul class="rows contact__rows">
-          <li><span class="rows__name">Утас</span><a class="rows__value link" href="tel:+97699614142">9961 4142</a></li>
           <li><span class="rows__name">Instagram</span><a class="rows__value link" href="https://www.instagram.com/aether_solace_/" target="_blank" rel="noopener">@aether_solace_</a></li>
         </ul>
       </div>
@@ -219,10 +307,10 @@
           <a class="nav__logo" href="#top"><span class="mark" data-mark="arc" aria-hidden="true"></span>Боргил</a>
           <p class="footer__lede">Волейболчин, сурагч, вэб сурагч.</p>
         </div>
-        <div class="span-2 footer__col"><h4>Волейбол</h4><ul><li><a href="#volleyball">Зорилго</a></li></ul></div>
+        <div class="span-2 footer__col"><h4>Волейбол</h4><ul><li><a href="#volleyball">Зорилго</a></li><li><a href="#future">Ирээдүйн би</a></li></ul></div>
         <div class="span-2 footer__col"><h4>Сургууль</h4><ul><li><a href="#study">Боловсрол ба хэл</a></li></ul></div>
         <div class="span-2 footer__col"><h4>Төслүүд</h4><ul><li><a href="#web">Вэб төслүүд</a></li><li><a href="https://github.com/Aether656/borgil-cv" target="_blank" rel="noopener">Сайтын код</a></li></ul></div>
-        <div class="span-2 footer__col"><h4>Холбоо</h4><ul><li><a href="mailto:borgilbadrakh882@gmail.com">Имэйл</a></li><li><a href="https://github.com/Aether656" target="_blank" rel="noopener">GitHub</a></li><li><a href="https://www.instagram.com/aether_solace_/" target="_blank" rel="noopener">Instagram</a></li><li><a href="tel:+97699614142">9961 4142</a></li></ul></div>
+        <div class="span-2 footer__col"><h4>Холбоо</h4><ul><li><a href="mailto:borgilbadrakh882@gmail.com">Имэйл</a></li><li><a href="https://github.com/Aether656" target="_blank" rel="noopener">GitHub</a></li><li><a href="https://www.instagram.com/aether_solace_/" target="_blank" rel="noopener">Instagram</a></li></ul></div>
       </div>
       <div class="footer__legal">
         <span>&copy; 2026 Боргил</span>
@@ -233,6 +321,30 @@
   </div>
 </footer>
 
+<script>
+  /* the plan deck: buttons, arrow keys and a swipe move one slide; nothing moves by itself */
+  document.querySelectorAll('[data-deck]').forEach((deck) => {
+    const track = deck.querySelector('.deck__track'), slides = [...track.children], n = slides.length;
+    const prev = deck.querySelector('[data-deck-prev]'), next = deck.querySelector('[data-deck-next]');
+    const now = deck.querySelector('[data-deck-now]'), fill = deck.querySelector('[data-deck-fill]');
+    let i = 0;
+    const go = (k) => {
+      i = Math.max(0, Math.min(n - 1, k));
+      track.style.transform = 'translateX(' + (-100 * i) + '%)';
+      slides.forEach((s, j) => { s.inert = j !== i; s.setAttribute('aria-hidden', j !== i); });
+      now.textContent = i + 1; fill.style.width = ((i + 1) / n * 100) + '%';
+      prev.disabled = i === 0; next.disabled = i === n - 1;
+    };
+    prev.addEventListener('click', () => go(i - 1));
+    next.addEventListener('click', () => go(i + 1));
+    deck.addEventListener('keydown', (e) => { if (e.key === 'ArrowRight') { go(i + 1); e.preventDefault(); } if (e.key === 'ArrowLeft') { go(i - 1); e.preventDefault(); } });
+    let x0 = null;
+    const vp = deck.querySelector('.deck__viewport');
+    vp.addEventListener('pointerdown', (e) => { x0 = e.clientX; });
+    vp.addEventListener('pointerup', (e) => { if (x0 === null) return; const dx = e.clientX - x0; x0 = null; if (Math.abs(dx) > 48) go(i + (dx < 0 ? 1 : -1)); });
+    go(0);
+  });
+</script>
 <script type="module" src="assets/system.js"></script>
 <script type="module" src="assets/motion/motion.js"></script>
 <script type="module" src="assets/layout/layout.js"></script>
