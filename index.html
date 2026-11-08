@@ -175,6 +175,61 @@
   @media (max-width: 639px) { .deck { --deck-h: 460px; } .deck__text { padding: var(--s-5); } }
   @media (max-height: 800px) and (min-width: 1024px) { .deck { --deck-h: clamp(210px, 100svh - 510px, 400px); } .deck__text { padding: var(--s-6); } }
   @media (prefers-reduced-motion: reduce) { .deck__track, .deck__progress > span { transition: none; } }
+
+  /* ABOUT ME (#about, #likes, #music): the same page, with his favourite wine red as the accent */
+  .me { --wine: #e0647f; }
+  .me__kicker { margin: 0; font-size: var(--t-label); font-weight: 500; letter-spacing: .02em; color: var(--wine); }
+  .me__photo { position: relative; --ratio: 128%; }
+  .me__photo .frame__img { object-position: 50% 35%; }
+  .frame.me__photo > .me__tag { position: absolute; z-index: 2; margin: 0; left: var(--s-4); bottom: var(--s-4); padding: 6px 12px; border-radius: 999px; background: rgb(10 13 20 / .72); backdrop-filter: blur(6px); font-size: var(--t-small); color: var(--ink); }
+  .idcard { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; margin: 0; border-radius: var(--r-lg); overflow: hidden; background: var(--line); }
+  .idcard > div { display: flex; flex-direction: column; gap: var(--s-2); padding: var(--s-5); background: var(--surface); }
+  .idcard dt { font-size: var(--t-small); color: var(--muted); }
+  .idcard dd { margin: 0; font: var(--display-weight) clamp(22px, 1vw + 14px, 30px)/1.1 var(--font-display); letter-spacing: var(--display-tracking); font-variant-numeric: tabular-nums; }
+  .swatches { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-4); }
+  .swatch { position: relative; height: 96px; border-radius: var(--r-md); overflow: hidden; box-shadow: inset 0 0 0 1px var(--line); }
+  .swatch img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .swatch span { position: absolute; left: var(--s-4); bottom: var(--s-3); font-weight: 500; color: #fff; text-shadow: 0 1px 8px rgb(0 0 0 / .6); }
+  .likes { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--s-5); }
+  .like { display: flex; flex-direction: column; gap: var(--s-3); color: inherit; text-decoration: none; }
+  .like h3 { margin: 0; }
+  .like p { margin: 0; color: var(--muted); }
+  .like p b { color: var(--ink); font-weight: 500; }
+  .like__media { position: relative; aspect-ratio: 1 / 1; margin-bottom: var(--s-2); border-radius: var(--r-lg); overflow: hidden; background: var(--surface); }
+  .like__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .6s cubic-bezier(.2,.7,.2,1); }
+  .like:hover .like__media img { transform: scale(1.04); }
+  .like__media--pair { display: grid; grid-template-rows: 1fr 1fr; gap: 3px; background: var(--bg); }
+  .like__media--pair img { position: relative; inset: auto; }
+  .like__media--wine { display: grid; place-items: center; background: radial-gradient(120% 90% at 30% 20%, #8e2a45, #4a0f22 60%, #22070f); }
+  .like__big { font: 500 clamp(40px, 2.4vw + 18px, 64px)/1 var(--font-display); letter-spacing: -.04em; color: #fbe9ee; transition: transform .5s cubic-bezier(.2,.7,.2,1); }
+  .like--music:hover .like__big { transform: scale(1.06); }
+  .like--music:focus-visible { outline: 2px solid var(--wine); outline-offset: 4px; border-radius: var(--r-lg); }
+  @media (max-width: 1023px) { .likes { grid-template-columns: 1fr 1fr; } .like__media { aspect-ratio: 4 / 3; } }
+  @media (max-width: 639px) { .likes { grid-template-columns: 1fr; gap: var(--s-5); } .like { display: grid; grid-template-columns: 112px minmax(0, 1fr); grid-template-rows: auto auto 1fr; column-gap: var(--s-4); row-gap: var(--s-1); align-items: start; } .like__media { grid-row: 1 / 4; aspect-ratio: 1 / 1; margin: 0; border-radius: var(--r-md); } .like__big { font-size: 28px; } .like p:not(.me__kicker) { font-size: var(--t-small); } .idcard > div { padding: var(--s-4); } .swatch { height: 72px; } }
+  @media (max-height: 800px) and (min-width: 1024px) { .like__media { aspect-ratio: 4 / 3; } .me__photo { --ratio: 100%; } .idcard > div { padding: var(--s-4); } .swatch { height: 64px; } #about .stack-6 { gap: var(--s-5); } }
+  .songs { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
+  .songs li { border-bottom: 1px solid var(--line); }
+  .song { display: grid; grid-template-columns: 32px 80px minmax(0, 1fr) auto; align-items: center; gap: var(--s-4); padding: 10px var(--s-2); color: inherit; text-decoration: none; border-radius: var(--r-md); transition: background .15s; }
+  .song:hover { background: var(--surface); }
+  .song:focus-visible { outline: 2px solid var(--wine); outline-offset: -2px; }
+  .song__n { font-variant-numeric: tabular-nums; color: var(--wine); font-weight: 500; }
+  .song__thumb { width: 80px; height: 45px; object-fit: cover; border-radius: 6px; background: var(--surface); }
+  .song__t { display: flex; flex-direction: column; min-width: 0; }
+  .song__t b { font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .song__t span { font-size: var(--t-small); color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .song__go { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line-strong, var(--line)); font-size: var(--t-small); color: var(--muted); transition: color .15s, border-color .15s; }
+  .song:hover .song__go { color: var(--ink); border-color: var(--wine); }
+  @media (max-width: 639px) { .song { grid-template-columns: 24px 64px minmax(0, 1fr) 20px; gap: var(--s-3); } .song__thumb { width: 64px; height: 36px; } .song__go { padding: 0; border: 0; font-size: 0; gap: 0; } .song__go svg { width: 14px; height: 14px; } }
+  @media (max-height: 800px) and (min-width: 1024px) { .song { padding-block: 3px; } .music__head { gap: var(--s-4); } .song__thumb { width: 64px; height: 36px; } .song { grid-template-columns: 32px 64px minmax(0, 1fr) auto; } }
+
+  .crush__photo { --ratio: 112%; }
+  .crush__photo .frame__img { object-position: 50% 18%; }
+  .crush__text { align-self: center; }
+  .crush__name { font-size: clamp(44px, 3.4vw + 16px, 88px); line-height: .98; letter-spacing: var(--display-tracking-xl); }
+  .chips { display: flex; flex-wrap: wrap; gap: var(--s-2); margin: 0; padding: 0; list-style: none; }
+  .chips li { padding: 8px 14px; border-radius: 999px; border: 1px solid color-mix(in oklab, var(--wine) 45%, transparent); background: color-mix(in oklab, var(--wine) 10%, transparent); font-size: var(--t-small); }
+  @media (max-width: 1023px) { .crush__photo { --ratio: 80%; } }
+  @media (max-height: 800px) and (min-width: 1024px) { .crush__photo { --ratio: 92%; } }
 </style>
 </head>
 <body>
@@ -188,6 +243,7 @@
   <div class="wrap nav__bar">
     <a class="nav__logo" href="#top"><span class="mark" data-mark="arc" aria-hidden="true"></span><span data-en="Borgil">Боргил</span></a>
     <nav class="nav__links" aria-label="Үндсэн цэс" data-en-label="Main menu">
+      <div class="nav__item"><a class="nav__link" href="#about" data-en="About me">Би хэн бэ</a></div>
       <div class="nav__item"><a class="nav__link" href="#highlight" data-en="Highlights">Highlight</a></div>
       <div class="nav__item"><a class="nav__link" href="#record" data-en="Record">Амжилт</a></div>
       <div class="nav__item"><a class="nav__link" href="#team" data-en="Team">Баг</a></div>
@@ -224,6 +280,122 @@
         <div class="hero-visual frame frame--photo span-6 start-7">
           <img class="frame__img" src="assets/img/match-set.jpg" alt="Боргил тоглолтын үеэр бөмбөг холбож байна" data-en-alt="Borgil setting the ball during a match" fetchpriority="high" width="946" height="2046" data-source="client" data-subject="Боргил талбай дээр бөмбөг холбож байна">
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT: who Borgil is beyond volleyball (the client asked for a clean, fresh tab); the accent here is his favourite wine red -->
+  <section class="section me" id="about" aria-labelledby="about-h">
+    <div class="wrap">
+      <div class="grid grid--top">
+        <div class="me__photo frame frame--photo span-5">
+          <img class="frame__img" src="assets/img/borgil-kid.jpg" alt="Бага насны Боргил цүнхээ барин зогсож байна" data-en-alt="Borgil as a little kid, holding his school bag" loading="lazy" width="581" height="778" data-source="client" data-subject="Бага насны Боргил">
+          <span class="me__tag" data-en="Little Borgil">Бага насны Боргил</span>
+        </div>
+        <div class="span-6 start-7 stack-6">
+          <p class="me__kicker" data-en="About me">Миний тухай</p>
+          <h2 id="about-h" data-en="Who is Borgil?">Боргил гэж хэн бэ?</h2>
+          <p class="t-lead measure" data-en="Volleyball is a big part of my life, but not all of it. Here is a little more about me.">Волейбол бол миний амьдралын том хэсэг ч бүх зүйл биш. Энд өөрийнхөө тухай жаахан илүү ихийг хуваалцъя.</p>
+          <dl class="idcard">
+            <div><dt data-en="Name">Нэр</dt><dd data-en="Borgil">Боргил</dd></div>
+            <div><dt data-en="Age">Нас</dt><dd>17</dd></div>
+            <div><dt data-en="Birthday">Төрсөн өдөр</dt><dd>2009.12.08</dd></div>
+            <div><dt data-en="Star sign">Орд</dt><dd><span aria-hidden="true">&#9808;&#xFE0E;</span> <span data-en="Sagittarius">Нум</span></dd></div>
+          </dl>
+          <div class="stack-4">
+            <p class="me__kicker" data-en="Favourite colours">Дуртай өнгө</p>
+            <div class="swatches">
+              <div class="swatch"><img src="assets/img/color-black.jpg" alt="" loading="lazy" width="720" height="720"><span data-en="Black">Хар</span></div>
+              <div class="swatch"><img src="assets/img/color-wine.jpg" alt="" loading="lazy" width="570" height="570"><span data-en="Wine red">Дарсны улаан</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIKES: food and the four hobbies, one card each -->
+  <section class="section me" id="likes" aria-labelledby="likes-h">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="likes-h" data-en="What I love">Миний дуртай зүйлс</h2>
+        <p data-en="Food, hobbies and what I do in my free time.">Хоол, хобби, чөлөөт цагаараа юу хийдэг вэ.</p>
+      </div>
+      <div class="likes">
+        <article class="like">
+          <div class="like__media"><img src="assets/img/food-carbonara.jpg" alt="Carbonara паста" data-en-alt="Pasta carbonara" loading="lazy" width="640" height="480"></div>
+          <p class="me__kicker" data-en="Hobby 01 · Food">Хобби 01 · Хоол</p>
+          <h3 data-en="Cooking new dishes">Шинэ хоол хийж турших</h3>
+          <p data-en="I love trying new recipes. My favourite is Mediterranean food, especially Italian, and my favourite dish is pasta carbonara.">Янз бүрийн шинэ хоол хийж турших дуртай. Газрын дундад тэнгисийн, ялангуяа Итали хоолонд дуртай. Хамгийн дуртай хоол маань Carbonara паста.</p>
+        </article>
+        <article class="like">
+          <div class="like__media"><img src="assets/img/brizard.jpg" alt="Antoine Brizard Францын шигшээ багийн өмсгөлтэй" data-en-alt="Antoine Brizard in the French national team jersey" loading="lazy" width="612" height="408" style="object-position: 62% 30%"></div>
+          <p class="me__kicker" data-en="Hobby 02 · Sport">Хобби 02 · Спорт</p>
+          <h3 data-en="Volleyball">Волейбол</h3>
+          <p data-en="&lt;b&gt;Favourite player:&lt;/b&gt; Antoine Brizard, setter for the French national team."><b>Дуртай тоглогч:</b> Antoine Brizard, Францын шигшээ багийн холбогч.</p>
+        </article>
+        <article class="like">
+          <div class="like__media like__media--pair"><img src="assets/img/game-mlbb.jpg" alt="Mobile Legends: Bang Bang" loading="lazy" width="1000" height="750"><img src="assets/img/game-cs2.jpg" alt="Counter-Strike 2" loading="lazy" width="460" height="215"></div>
+          <p class="me__kicker" data-en="Hobby 03 · Games">Хобби 03 · Тоглоом</p>
+          <h3 data-en="Online games">Онлайн тоглоом</h3>
+          <p>Mobile Legends: Bang Bang, Counter-Strike 2.</p>
+        </article>
+        <a class="like like--music" href="#music">
+          <div class="like__media like__media--wine"><span class="like__big">Top 10</span></div>
+          <p class="me__kicker" data-en="Hobby 04 · Music">Хобби 04 · Хөгжим</p>
+          <h3 data-en="Listening to music">Дуу сонсох</h3>
+          <p><span data-en="My ten favourite songs, each with a YouTube link">Дуртай 10 дуу маань, YouTube холбоостой</span> <span aria-hidden="true">&darr;</span></p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CRUSH: the client asked for a celebrity crush block on the About tab -->
+  <section class="section me" id="crush" aria-labelledby="crush-h">
+    <div class="wrap">
+      <div class="grid grid--top">
+        <div class="frame frame--photo crush__photo span-5">
+          <img class="frame__img" src="assets/img/celeb-angelina.jpg" alt="Angelina Jolie киноны нээлтийн ёслол дээр" data-en-alt="Angelina Jolie at a film premiere" loading="lazy" width="745" height="1000" data-source="client" data-subject="Angelina Jolie">
+        </div>
+        <div class="span-6 start-7 stack-6 crush__text">
+          <p class="me__kicker">Celebrity Crush <span aria-hidden="true">&#9829;&#xFE0E;</span></p>
+          <h2 id="crush-h" class="crush__name">Angelina Jolie</h2>
+          <p class="t-lead measure" data-en="American actress and filmmaker, and my celebrity crush.">Америкийн жүжигчин, найруулагч. Миний celebrity crush.</p>
+          <div class="stack-4">
+            <p class="me__kicker" data-en="Films">Кинонууд</p>
+            <ul class="chips">
+              <li>Mr. &amp; Mrs. Smith</li>
+              <li>Maleficent</li>
+              <li>Lara Croft: Tomb Raider</li>
+              <li>Salt</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MUSIC: the client's top 10, in his order, each row opens the song on YouTube -->
+  <section class="section me" id="music" aria-labelledby="music-h">
+    <div class="wrap">
+      <div class="grid grid--top">
+        <div class="span-4 stack-6 music__head">
+          <p class="me__kicker" data-en="Hobby 04 · Music">Хобби 04 · Хөгжим</p>
+          <h2 id="music-h" data-en="My top 10">Миний санал болгох Top 10</h2>
+          <p class="muted" data-en="My favourite artists, bands and songs. Tap a song to listen on YouTube.">Дуртай уран бүтээлч, хамтлаг, дуунууд маань. Дуу дээр дарж YouTube-ээс сонсоорой.</p>
+        </div>
+        <ol class="songs span-7 start-6">
+            <li><a class="song" href="https://www.youtube.com/watch?v=dyk1ScMc6Gc" target="_blank" rel="noopener" aria-label="01. Måneskin — Coraline. YouTube-ээр сонсох" data-en-label="01. Måneskin — Coraline. Listen on YouTube"><span class="song__n">01</span><img class="song__thumb" src="https://i.ytimg.com/vi/dyk1ScMc6Gc/mqdefault.jpg" alt="" loading="lazy" width="320" height="180"><span class="song__t"><b>Coraline</b><span>Måneskin</span></span><span class="song__go">YouTube<svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M4 2h6v6M10 2 3 9" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></li>
+            <li><a class="song" href="https://www.youtube.com/watch?v=6e6Hj7MwWaI" target="_blank" rel="noopener" aria-label="02. Crystal Castles — Vanished. YouTube-ээр сонсох" data-en-label="02. Crystal Castles — Vanished. Listen on YouTube"><span class="song__n">02</span><img class="song__thumb" src="https://i.ytimg.com/vi/6e6Hj7MwWaI/mqdefault.jpg" alt="" loading="lazy" width="320" height="180"><span class="song__t"><b>Vanished</b><span>Crystal Castles</span></span><span class="song__go">YouTube<svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M4 2h6v6M10 2 3 9" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></li>
+            <li><a class="song" href="https://www.youtube.com/watch?v=ayc4Nv1fnZY" target="_blank" rel="noopener" aria-label="03. Crystal Castles — Crimewave. YouTube-ээр сонсох" data-en-label="03. Crystal Castles — Crimewave. Listen on YouTube"><span class="song__n">03</span><img class="song__thumb" src="https://i.ytimg.com/vi/ayc4Nv1fnZY/mqdefault.jpg" alt="" loading="lazy" width="320" height="180"><span class="song__t"><b>Crimewave</b><span>Crystal Castles</span></span><span class="song__go">YouTube<svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M4 2h6v6M10 2 3 9" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></li>
+            <li><a class="song" href="https://www.youtube.com/watch?v=LYU-8IFcDPw" target="_blank" rel="noopener" aria-label="04. Linkin Park — Faint. YouTube-ээр сонсох" data-en-label="04. Linkin Park — Faint. Listen on YouTube"><span class="song__n">04</span><img class="song__thumb" src="https://i.ytimg.com/vi/LYU-8IFcDPw/mqdefault.jpg" alt="" loading="lazy" width="320" height="180"><span class="song__t"><b>Faint</b><span>Linkin Park</span></span><span class="song__go">YouTube<svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M4 2h6v6M10 2 3 9" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></li>
+            <li><a class="song" href="https://www.youtube.com/watch?v=bpOSxM0rNPM" target="_blank" rel="noopener" aria-label="05. Arctic Monkeys — Do I Wanna Know?. YouTube-ээр сонсох" data-en-label="05. Arctic Monkeys — Do I Wanna Know?. Listen on YouTube"><span class="song__n">05</span><img class="song__thumb" src="https://i.ytimg.com/vi/bpOSxM0rNPM/mqdefault.jpg" alt="" loading="lazy" width="320" height="180"><span class="song__t"><b>Do I Wanna Know?</b><span>Arctic Monkeys</span></span><span class="song__go">YouTube<svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M4 2h6v6M10 2 3 9" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></li>
+            <li><a class="song" href="https://www.youtube.com/watch?v=H2vTrHc-OGk" target="_blank" rel="noopener" aria-label="06. 2hollis — poster boy. YouTube-ээр сонсох" data-en-label="06. 2hollis — poster boy. Listen on YouTube"><span class="song__n">06</span><img class="song__thumb" src="https://i.ytimg.com/vi/H2vTrHc-OGk/mqdefault.jpg" alt="" loading="lazy" width="320" height="180"><span class="song__t"><b>poster boy</b><span>2hollis</span></span><span class="song__go">YouTube<svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M4 2h6v6M10 2 3 9" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></li>
+            <li><a class="song" href="https://www.youtube.com/watch?v=Uol-WiWKSmI" target="_blank" rel="noopener" aria-label="07. mxrningstar — хүн. YouTube-ээр сонсох" data-en-label="07. mxrningstar — хүн. Listen on YouTube"><span class="song__n">07</span><img class="song__thumb" src="https://i.ytimg.com/vi/Uol-WiWKSmI/mqdefault.jpg" alt="" loading="lazy" width="320" height="180"><span class="song__t"><b>хүн</b><span>mxrningstar</span></span><span class="song__go">YouTube<svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M4 2h6v6M10 2 3 9" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></li>
+            <li><a class="song" href="https://www.youtube.com/watch?v=SgHldVP0aak" target="_blank" rel="noopener" aria-label="08. mxrningstar — үүрнээсээ чи. YouTube-ээр сонсох" data-en-label="08. mxrningstar — үүрнээсээ чи. Listen on YouTube"><span class="song__n">08</span><img class="song__thumb" src="https://i.ytimg.com/vi/SgHldVP0aak/mqdefault.jpg" alt="" loading="lazy" width="320" height="180"><span class="song__t"><b>үүрнээсээ чи</b><span>mxrningstar</span></span><span class="song__go">YouTube<svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M4 2h6v6M10 2 3 9" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></li>
+            <li><a class="song" href="https://www.youtube.com/watch?v=8ex38L8xtNI" target="_blank" rel="noopener" aria-label="09. The Weeknd — House Of Balloons. YouTube-ээр сонсох" data-en-label="09. The Weeknd — House Of Balloons. Listen on YouTube"><span class="song__n">09</span><img class="song__thumb" src="https://i.ytimg.com/vi/8ex38L8xtNI/mqdefault.jpg" alt="" loading="lazy" width="320" height="180"><span class="song__t"><b>House Of Balloons</b><span>The Weeknd</span></span><span class="song__go">YouTube<svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M4 2h6v6M10 2 3 9" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></li>
+            <li><a class="song" href="https://www.youtube.com/watch?v=iALdD38XzEM" target="_blank" rel="noopener" aria-label="10. Trishna — MAD. YouTube-ээр сонсох" data-en-label="10. Trishna — MAD. Listen on YouTube"><span class="song__n">10</span><img class="song__thumb" src="https://i.ytimg.com/vi/iALdD38XzEM/mqdefault.jpg" alt="" loading="lazy" width="320" height="180"><span class="song__t"><b>MAD</b><span>Trishna</span></span><span class="song__go">YouTube<svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M4 2h6v6M10 2 3 9" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></li>
+        </ol>
       </div>
     </div>
   </section>
@@ -516,7 +688,7 @@
         </div>
         <div class="span-2 footer__col"><h4 data-en="Volleyball">Волейбол</h4><ul><li><a href="#highlight" data-en="Highlights">Highlight</a></li><li><a href="#record" data-en="Record">Амжилт</a></li><li><a href="#training" data-en="Training">Бэлтгэл</a></li><li><a href="#future" data-en="Future me">Ирээдүйн би</a></li></ul></div>
         <div class="span-2 footer__col"><h4 data-en="Team">Баг</h4><ul><li><a href="#team" data-en="My team">Багийнхан</a></li><li><a href="#coach" data-en="Coach's advice">Дасгалжуулагчийн үг</a></li></ul></div>
-        <div class="span-2 footer__col"><h4 data-en="More">Бусад</h4><ul><li><a href="#study" data-en="School">Сургууль</a></li><li><a href="#web" data-en="Projects">Төслүүд</a></li><li><a href="https://github.com/Aether656/borgil-cv" target="_blank" rel="noopener" data-en="Site code">Сайтын код</a></li></ul></div>
+        <div class="span-2 footer__col"><h4 data-en="More">Бусад</h4><ul><li><a href="#about" data-en="About me">Боргил гэж хэн бэ</a></li><li><a href="#music" data-en="Top 10 songs">Top 10 дуу</a></li><li><a href="#study" data-en="School">Сургууль</a></li><li><a href="#web" data-en="Projects">Төслүүд</a></li><li><a href="https://github.com/Aether656/borgil-cv" target="_blank" rel="noopener" data-en="Site code">Сайтын код</a></li></ul></div>
         <div class="span-2 footer__col"><h4 data-en="Contact">Холбоо</h4><ul><li><a href="mailto:borgilbadrakh882@gmail.com" data-en="Email">Имэйл</a></li><li><a href="cv/borgil-cv-mn.pdf" download data-cv data-en="CV (PDF)">CV (PDF)</a></li><li><a href="https://github.com/Aether656" target="_blank" rel="noopener">GitHub</a></li><li><a href="https://www.instagram.com/aether_solace_/" target="_blank" rel="noopener">Instagram</a></li></ul></div>
       </div>
       <div class="footer__legal">
