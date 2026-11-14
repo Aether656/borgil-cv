@@ -225,6 +225,11 @@
   .like__more { display: none; }
   .like-detail .like__more { display: grid; gap: var(--s-5); margin-top: var(--s-3); }
   .idcard__wide { grid-column: 1 / -1; }
+  .showcase { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-3); }
+  .showcase figure { position: relative; margin: 0; aspect-ratio: 3 / 4; border-radius: var(--r-md); overflow: hidden; background: #0b0d1a; }
+  .showcase img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 15%; display: block; }
+  .showcase__rank img { object-fit: contain; object-position: 50% 45%; padding: var(--s-4); }
+  .showcase figcaption { position: absolute; left: var(--s-3); right: var(--s-3); bottom: var(--s-3); padding: 6px 12px; border-radius: 999px; background: rgb(10 13 20 / .72); backdrop-filter: blur(6px); font-size: var(--t-small); color: #fff; text-align: center; }
   .like-detail .recipe { gap: var(--s-3); }
   .recipe h4 { margin: var(--s-2) 0 0; font: var(--display-weight) clamp(22px, 1vw + 16px, 28px)/1.15 var(--font-display); letter-spacing: var(--display-tracking); }
   .recipe .me__kicker { margin-top: var(--s-2); }
@@ -468,6 +473,10 @@
             <div class="clan">
               <img src="assets/img/clan-eclyps.jpg" alt="Eclyps кланы лого" data-en-alt="Eclyps clan logo" loading="lazy" width="428" height="428">
               <div><p class="me__kicker" data-en="Clan">Клан</p><p class="clan__name">Eclyps</p></div>
+            </div>
+            <div class="showcase">
+              <figure><img src="assets/img/game-wanwan.jpg" alt="Wanwan, MLBB-ийн баатар" data-en-alt="Wanwan, an MLBB hero" loading="lazy" width="736" height="1309"><figcaption data-en="Favourite hero · Wanwan">Дуртай баатар · Wanwan</figcaption></figure>
+              <figure class="showcase__rank"><img src="assets/img/game-mythic.jpg" alt="Mythic Honor ранкны тэмдэг" data-en-alt="Mythic Honor rank emblem" loading="lazy" width="415" height="500"><figcaption data-en="Highest rank · Mythic Honor 35">Хамгийн өндөр ранк · Mythic Honor 35</figcaption></figure>
             </div>
             <dl class="idcard">
               <div><dt data-en="Role">Үүрэг</dt><dd>Marksman</dd></div>
