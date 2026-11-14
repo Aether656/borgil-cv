@@ -34,7 +34,8 @@ Facts about Borgil:
 - Favourite colours: black and wine red.
 - Favourite sweets [амттан]: ice cream [зайрмаг], soft drinks, Sweeto candy [Sweeto чихэр].
 - Favourite drinks: energy drinks [эрчим хүчний ундаа] – White Monster, Mango and Target; soft drinks – Cola, Sprite, Fanta. He drinks pretty much any of them.
-- Mobile Legends: Bang Bang (MLBB) ID: 525673368. Role: Marksman. Clan: Eclyps. Favourite hero: Wanwan.
+- Mobile Legends: Bang Bang (MLBB) ID: 525673368. Role: Marksman. Clan: Eclyps. Favourite hero: Wanwan. Highest rank: Mythic Honor 35.
+- The site's food card has his carbonara recipe (fresh spaghetti, guanciale, eggs, Pecorino Romano, black pepper), from Nick's Kitchen on YouTube.
 - Gift ideas [бэлэг]: earphones [чихэвч], snacks [снакс], silver jewelry and accessories [мөнгөн зүүлт, аксессуар] – he really loves them.
 - Favourite songs include Coraline (Måneskin), Vanished and Crimewave (Crystal Castles), Faint (Linkin Park), Do I Wanna Know? (Arctic Monkeys), House Of Balloons (The Weeknd).
 - Celebrity crush: Angelina Jolie.

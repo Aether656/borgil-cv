@@ -224,10 +224,19 @@
   .like-detail__body p b { color: var(--ink); font-weight: 500; }
   .like__more { display: none; }
   .like-detail .like__more { display: grid; gap: var(--s-5); margin-top: var(--s-3); }
+  .idcard__wide { grid-column: 1 / -1; }
+  .like-detail .recipe { gap: var(--s-3); }
+  .recipe h4 { margin: var(--s-2) 0 0; font: var(--display-weight) clamp(22px, 1vw + 16px, 28px)/1.15 var(--font-display); letter-spacing: var(--display-tracking); }
+  .recipe .me__kicker { margin-top: var(--s-2); }
+  .recipe :is(ul, ol) { margin: 0; padding-left: 1.3em; display: grid; gap: var(--s-2); color: var(--ink); font-size: 16px; line-height: 1.5; }
+  .recipe li::marker { color: var(--wine); }
+  .like-detail__body .recipe__tip { padding: var(--s-4); border-radius: var(--r-md); background: color-mix(in oklab, var(--wine) 12%, transparent); color: var(--ink); font-size: 16px; }
+  .like-detail__body .recipe__src { font-size: var(--t-small); }
+  .recipe__src a { color: var(--wine); }
   .clan { display: flex; align-items: center; gap: var(--s-4); }
   .clan img { width: 88px; height: 88px; flex: none; border-radius: var(--r-md); object-fit: cover; }
   .like-detail__body .clan p { color: var(--ink); }
-  .like-detail__body .clan .me__kicker { color: var(--wine); font-size: var(--t-label); }
+  .like-detail__body .me__kicker { color: var(--wine); font-size: var(--t-label); }
   .clan__name { margin: 0; font: var(--display-weight) clamp(28px, 2vw + 16px, 40px)/1.1 var(--font-display) !important; letter-spacing: var(--display-tracking); }
   .like-detail__close { position: absolute; top: var(--s-4); right: var(--s-4); z-index: 2; width: 44px; height: 44px; border-radius: 50%; border: 0; background: rgb(10 13 20 / .72); backdrop-filter: blur(6px); color: #fff; font-size: 24px; line-height: 1; cursor: pointer; }
   .like-detail__close:hover { background: rgb(10 13 20 / .9); }
@@ -404,6 +413,44 @@
           <p class="me__kicker" data-en="Hobby 01 · Food">Хобби 01 · Хоол</p>
           <h3 data-en="Cooking new dishes">Шинэ хоол хийж турших</h3>
           <p data-en="I love trying new recipes. My favourite is Mediterranean food, especially Italian, and my favourite dish is pasta carbonara.">Янз бүрийн шинэ хоол хийж турших дуртай. Газрын дундад тэнгисийн, ялангуяа Итали хоолонд дуртай. Хамгийн дуртай хоол маань Carbonara паста.</p>
+          <div class="like__more recipe">
+            <h4 data-en="Carbonara recipe · 4 servings">Carbonara-ийн жор · 4 хүний порц</h4>
+            <p class="me__kicker" data-en="Fresh pasta">Шинэ гоймон</p>
+            <ul>
+              <li data-en="275 g 00 flour">275 г «00» гурил</li>
+              <li data-en="2 eggs + 2 egg yolks">2 өндөг + 2 шар</li>
+              <li data-en="A pinch of salt, a little water if needed">Чимх давс, шаардлагатай бол бага зэрэг ус</li>
+              <li data-en="Rice flour or semolina for dusting">Цацах будааны гурил эсвэл семолина</li>
+            </ul>
+            <p class="me__kicker" data-en="Crispy crumbs (pangrattato)">Шаржигнуур үйрмэг (pangrattato)</p>
+            <ul>
+              <li data-en="1 tbsp olive oil">1 х/х оливын тос</li>
+              <li data-en="20 g panko breadcrumbs">20 г панко талхны үйрмэг</li>
+              <li data-en="25 g grated Pecorino Romano">25 г үрсэн Pecorino Romano бяслаг</li>
+            </ul>
+            <p class="me__kicker" data-en="Sauce">Соус</p>
+            <ul>
+              <li data-en="115 g guanciale (cured pork cheek)">115 г guanciale (гахайн хацрын хатаасан мах)</li>
+              <li data-en="2 eggs + 2 egg yolks">2 өндөг + 2 шар</li>
+              <li data-en="100 g grated Pecorino Romano, plus more on top">100 г үрсэн Pecorino Romano, дээр нь цацахад нэмэлт</li>
+              <li data-en="1 tbsp coarse black pepper">1 х/х бүдүүн нунтагласан хар перец</li>
+              <li data-en="Salt for the pasta water">Гоймон чанах усанд давс</li>
+            </ul>
+            <p class="me__kicker" data-en="How to make it">Хийх заавар</p>
+            <ol>
+              <li data-en="Mix the flour, eggs, yolks and salt, then knead for 5–10 minutes until smooth. Add water only if it's too dry.">Гурил, өндөг, шар, давсаа холиод 5–10 минут зуурч гөлгөр болго. Хэт хуурай бол л ус нэм.</li>
+              <li data-en="Wrap the dough and let it rest for 1–3 hours.">Зуурмагаа боож 1–3 цаг амраа.</li>
+              <li data-en="Roll it out about 3 mm thin, dust with flour and cut into spaghetti.">3 мм орчим нимгэн элдээд гурил цацаж, спагетти болгон хэрч.</li>
+              <li data-en="Toast the panko in olive oil for 3–4 minutes until golden, then stir in the Pecorino off the heat.">Панког оливын тосонд 3–4 минут шаргал болтол хуурч, галнаас аваад бяслагаа хутга.</li>
+              <li data-en="Put the guanciale in a cold pan, then cook on medium heat for 9–11 minutes until crisp.">Guanciale-аа хүйтэн хайруулд хийгээд дунд галд 9–11 минут шаржигнатал шарж.</li>
+              <li data-en="Whisk the eggs, yolks, Pecorino and pepper together.">Өндөг, шар, бяслаг, перцээ сайтар хутга.</li>
+              <li data-en="Cook the pasta in salted boiling water for about 60 seconds. Keep 1 cup of the pasta water.">Гоймноо давстай буцалж буй усанд 60 секунд орчим чана. 1 аяга усыг нь хадгал.</li>
+              <li data-en="Off the heat, toss the pasta with the guanciale, the egg mix and a splash of pasta water until glossy and creamy.">Галнаас аваад гоймон, guanciale, өндөгний хольц, бага зэрэг гоймны усыг хурдан хутгаж гялгар, тослог соус болго.</li>
+              <li data-en="Serve right away with more Pecorino, the crumbs and pepper on top.">Дээр нь бяслаг, үйрмэг, перец цацаад шууд идээрэй.</li>
+            </ol>
+            <p class="recipe__tip" data-en="Tip: use room-temperature eggs and work fast, so the sauce turns silky instead of scrambled.">Зөвлөгөө: өндгөө өрөөний температуртай байлгаж, хурдан хутгавал соус чинь өндөгний шарсан хуурга биш, торгомсог болно.</p>
+            <p class="recipe__src"><span data-en="Recipe from">Жорын эх сурвалж:</span> <a href="https://youtu.be/CG1Yzk_F0P8" target="_blank" rel="noopener">Nick's Kitchen · YouTube</a></p>
+          </div>
         </article>
         <article class="like">
           <div class="like__media"><img src="assets/img/brizard.jpg" alt="Antoine Brizard Францын шигшээ багийн өмсгөлтэй" data-en-alt="Antoine Brizard in the French national team jersey" loading="lazy" width="612" height="408" style="object-position: 62% 30%"></div>
@@ -427,6 +474,7 @@
               <div><dt data-en="Favourite hero">Дуртай баатар</dt><dd>Wanwan</dd></div>
               <div><dt>MLBB ID</dt><dd>525673368</dd></div>
               <div><dt data-en="Also plays">Мөн тоглодог</dt><dd>CS2</dd></div>
+              <div class="idcard__wide"><dt data-en="Highest rank">Хамгийн өндөр ранк</dt><dd>Mythic Honor 35</dd></div>
             </dl>
           </div>
         </article>
