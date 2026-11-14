@@ -222,6 +222,13 @@
   .like-detail__body h3 { margin: 0; font: var(--display-weight) clamp(28px, 2vw + 16px, 40px)/1.1 var(--font-display); letter-spacing: var(--display-tracking); }
   .like-detail__body p { margin: 0; color: var(--muted); font-size: 18px; }
   .like-detail__body p b { color: var(--ink); font-weight: 500; }
+  .like__more { display: none; }
+  .like-detail .like__more { display: grid; gap: var(--s-5); margin-top: var(--s-3); }
+  .clan { display: flex; align-items: center; gap: var(--s-4); }
+  .clan img { width: 88px; height: 88px; flex: none; border-radius: var(--r-md); object-fit: cover; }
+  .like-detail__body .clan p { color: var(--ink); }
+  .like-detail__body .clan .me__kicker { color: var(--wine); font-size: var(--t-label); }
+  .clan__name { margin: 0; font: var(--display-weight) clamp(28px, 2vw + 16px, 40px)/1.1 var(--font-display) !important; letter-spacing: var(--display-tracking); }
   .like-detail__close { position: absolute; top: var(--s-4); right: var(--s-4); z-index: 2; width: 44px; height: 44px; border-radius: 50%; border: 0; background: rgb(10 13 20 / .72); backdrop-filter: blur(6px); color: #fff; font-size: 24px; line-height: 1; cursor: pointer; }
   .like-detail__close:hover { background: rgb(10 13 20 / .9); }
   @media (max-width: 639px) { .like-detail { width: 100vw; max-width: 100vw; max-height: 92svh; margin: auto 0 0; border-radius: var(--r-lg) var(--r-lg) 0 0; } .like-detail .like__media--pair { height: 200px; } .like-detail__body { padding: var(--s-5); } }
@@ -410,6 +417,18 @@
           <h3 data-en="Online games">Онлайн тоглоом</h3>
           <p>Mobile Legends: Bang Bang, Counter-Strike 2.</p>
           <p><b>MLBB ID:</b> 525673368</p>
+          <div class="like__more">
+            <div class="clan">
+              <img src="assets/img/clan-eclyps.jpg" alt="Eclyps кланы лого" data-en-alt="Eclyps clan logo" loading="lazy" width="428" height="428">
+              <div><p class="me__kicker" data-en="Clan">Клан</p><p class="clan__name">Eclyps</p></div>
+            </div>
+            <dl class="idcard">
+              <div><dt data-en="Role">Үүрэг</dt><dd>Marksman</dd></div>
+              <div><dt data-en="Favourite hero">Дуртай баатар</dt><dd>Wanwan</dd></div>
+              <div><dt>MLBB ID</dt><dd>525673368</dd></div>
+              <div><dt data-en="Also plays">Мөн тоглодог</dt><dd>CS2</dd></div>
+            </dl>
+          </div>
         </article>
         <a class="like like--music" href="#music">
           <div class="like__media like__media--wine"><span class="like__big">Top 10</span></div>
