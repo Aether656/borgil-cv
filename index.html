@@ -208,6 +208,24 @@
   .like__media--silver { background: radial-gradient(120% 90% at 30% 20%, #f1f3f6, #9aa3ae 55%, #3b4048); }
   .like__media--silver .like__big { color: #1b1f26; }
   .like:hover .like__big { transform: scale(1.06); }
+  /* a card opens into its own detail view (a dialog); the music card still jumps to the Top 10 */
+  article.like { cursor: pointer; border-radius: var(--r-lg); }
+  article.like:focus-visible { outline: 2px solid var(--wine); outline-offset: 4px; }
+  .like-detail { width: min(680px, calc(100vw - 32px)); max-height: calc(100svh - 32px); padding: 0; border: 1px solid var(--line); border-radius: var(--r-lg); background: var(--bg); color: var(--ink); overflow: auto; }
+  .like-detail::backdrop { background: rgb(5 7 12 / .72); backdrop-filter: blur(6px); }
+  .like-detail[open] { animation: like-in .3s cubic-bezier(.2,.7,.2,1); }
+  @keyframes like-in { from { opacity: 0; transform: translateY(16px) scale(.98); } }
+  .like-detail .like__media { aspect-ratio: 16 / 10; margin: 0; border-radius: 0; }
+  .like-detail .like__media--pair { aspect-ratio: auto; grid-template-rows: none; grid-template-columns: 1fr 1fr; height: 300px; }
+  .like-detail .like__big { font-size: clamp(56px, 8vw, 96px); }
+  .like-detail__body { display: grid; gap: var(--s-3); padding: var(--s-6); }
+  .like-detail__body h3 { margin: 0; font: var(--display-weight) clamp(28px, 2vw + 16px, 40px)/1.1 var(--font-display); letter-spacing: var(--display-tracking); }
+  .like-detail__body p { margin: 0; color: var(--muted); font-size: 18px; }
+  .like-detail__body p b { color: var(--ink); font-weight: 500; }
+  .like-detail__close { position: absolute; top: var(--s-4); right: var(--s-4); z-index: 2; width: 44px; height: 44px; border-radius: 50%; border: 0; background: rgb(10 13 20 / .72); backdrop-filter: blur(6px); color: #fff; font-size: 24px; line-height: 1; cursor: pointer; }
+  .like-detail__close:hover { background: rgb(10 13 20 / .9); }
+  @media (max-width: 639px) { .like-detail { width: 100vw; max-width: 100vw; max-height: 92svh; margin: auto 0 0; border-radius: var(--r-lg) var(--r-lg) 0 0; } .like-detail .like__media--pair { height: 200px; } .like-detail__body { padding: var(--s-5); } }
+  @media (prefers-reduced-motion: reduce) { .like-detail[open] { animation: none; } }
   .like__big { font: 500 clamp(40px, 2.4vw + 18px, 64px)/1 var(--font-display); letter-spacing: -.04em; color: #fbe9ee; transition: transform .5s cubic-bezier(.2,.7,.2,1); }
   .like--music:hover .like__big { transform: scale(1.06); }
   .like--music:focus-visible { outline: 2px solid var(--wine); outline-offset: 4px; border-radius: var(--r-lg); }
@@ -777,6 +795,13 @@
   </div>
 </footer>
 
+<!-- LIKE DETAIL: a liked card opens here, filled from the card itself -->
+<dialog class="like-detail me" data-like-detail aria-labelledby="like-detail-h">
+  <button class="like-detail__close" type="button" data-like-close aria-label="Хаах" data-en-label="Close">×</button>
+  <div data-like-media></div>
+  <div class="like-detail__body" data-like-body></div>
+</dialog>
+
 <!-- AMORE: the AI assistant (a cupid), answers only about Borgil -->
 <div class="amore" data-amore>
   <button class="amore__fab" type="button" data-amore-open aria-label="Amore туслахтай ярих" data-en-label="Chat with Amore" aria-expanded="false" aria-controls="amore-panel">
@@ -886,6 +911,29 @@
     vp.addEventListener('pointerup', (e) => { if (x0 === null) return; const dx = e.clientX - x0; x0 = null; if (Math.abs(dx) > 48) go(i + (dx < 0 ? 1 : -1)); });
     go(0);
   });
+
+  /* liked cards: a click (or Enter / Space) opens the card in its own detail view */
+  (() => {
+    const dlg = document.querySelector('[data-like-detail]'); if (!dlg || !dlg.showModal) return;
+    const media = dlg.querySelector('[data-like-media]'), body = dlg.querySelector('[data-like-body]');
+    let from = null;
+    const open = (card) => {
+      from = card;
+      media.replaceChildren(card.querySelector('.like__media').cloneNode(true));
+      body.replaceChildren(...[...card.children].filter((el) => !el.classList.contains('like__media')).map((el) => el.cloneNode(true)));
+      const h = body.querySelector('h3'); if (h) h.id = 'like-detail-h';
+      dlg.showModal(); dlg.scrollTop = 0;
+    };
+    document.querySelectorAll('#likes article.like').forEach((card) => {
+      card.tabIndex = 0; card.setAttribute('role', 'button'); card.setAttribute('aria-haspopup', 'dialog');
+      card.addEventListener('click', () => open(card));
+      card.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(card); } });
+    });
+    dlg.querySelector('[data-like-close]').addEventListener('click', () => dlg.close());
+    dlg.addEventListener('click', (e) => { if (e.target === dlg) dlg.close(); });
+    dlg.addEventListener('close', () => { if (from) from.focus(); });
+    document.querySelector('[data-lang-toggle]').addEventListener('click', () => { if (dlg.open) dlg.close(); });
+  })();
 
   /* Amore: opens the chat, sends the conversation to /api/chat and shows the answer */
   (() => {
