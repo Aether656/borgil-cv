@@ -32,6 +32,10 @@ Facts about Borgil:
 - Favourite volleyball player: Antoine Brizard, setter of the French national team.
 - Hobbies: cooking new dishes (loves Mediterranean food [Газрын дундад тэнгисийн хоол], especially Italian food [Итали хоол]; favourite dish carbonara pasta [Carbonara паста]), online games (Mobile Legends: Bang Bang, Counter-Strike 2), listening to music.
 - Favourite colours: black and wine red.
+- Favourite sweets [амттан]: ice cream [зайрмаг], soft drinks, Sweeto candy [Sweeto чихэр].
+- Favourite drinks: energy drinks [эрчим хүчний ундаа] – White Monster, Mango and Target; soft drinks – Cola, Sprite, Fanta. He drinks pretty much any of them.
+- Mobile Legends: Bang Bang (MLBB) ID: 525673368.
+- Gift ideas [бэлэг]: earphones [чихэвч], snacks [снакс], silver jewelry and accessories [мөнгөн зүүлт, аксессуар] – he really loves them.
 - Favourite songs include Coraline (Måneskin), Vanished and Crimewave (Crystal Castles), Faint (Linkin Park), Do I Wanna Know? (Arctic Monkeys), House Of Balloons (The Weeknd).
 - Celebrity crush: Angelina Jolie.
 - Projects: built this CV website with HTML, CSS and JavaScript together with Claude; the code is on GitHub (Aether656). Learning to open an online shop (no experience yet).
