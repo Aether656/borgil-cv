@@ -19,7 +19,8 @@ Highlight бичлэг ба тамирчны үзүүлэлт, тэмцээни�
 - Хариултыг `api/chat.js` (Vercel функц) Google Gemini-ийн үнэгүй түвшнээр бичнэ. Боргилын тухай мэдээлэл тэр файлын `SYSTEM` хэсэгт байгаа. Сайтын мэдээлэл өөрчлөгдвөл тэндээ ч засна.
 - Vercel → borgil-cv → Settings → Environment Variables: `GEMINI_API_KEY` (заавал), `GEMINI_MODEL` (заавал биш, анхдагч нь `gemini-3.5-flash-lite`).
 - Үнэгүй түвшинд зочдын асуултыг Google сургалтад ашигладаг, өдрийн хязгаартай.
-- Дүр: `assets/amore.svg`, `assets/amore-face.svg`.
+- Дүр: `assets/img/amore.png` (бүтэн), `assets/img/amore-face.png` (товчны толгой) — `assets/img/cupid.jpg`-ийн дэвсгэрийг арилгаж гаргасан.
+- 90 секунд чатлахгүй бол Amore унтаж (Zzz), дарах эсвэл бичихэд сэрнэ.
 
 ## Зочдын тоо
 Vercel dashboard → borgil-cv → Analytics хэсэгт Web Analytics-ийг асаахад хэдэн хүн орсныг харуулна.
