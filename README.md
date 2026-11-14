@@ -14,6 +14,13 @@ Highlight бичлэг ба тамирчны үзүүлэлт, тэмцээни�
 ## Холбоо барих маягт
 Мессеж Supabase-ийн `contact_messages` хүснэгтэд хадгалагдана. Хүснэгтийг `supabase/contact_messages.sql`-ээр үүсгэнэ. Ирсэн мессежийг Supabase dashboard → Table Editor → contact_messages дээр уншина.
 
+## AI туслах Amore
+Баруун доод буланд байгаа cupid дүрт туслах. Зочдын асуултад зөвхөн Боргилын тухай хариулна.
+- Хариултыг `api/chat.js` (Vercel функц) Google Gemini-ийн үнэгүй түвшнээр бичнэ. Боргилын тухай мэдээлэл тэр файлын `SYSTEM` хэсэгт байгаа. Сайтын мэдээлэл өөрчлөгдвөл тэндээ ч засна.
+- Vercel → borgil-cv → Settings → Environment Variables: `GEMINI_API_KEY` (заавал), `GEMINI_MODEL` (заавал биш, анхдагч нь `gemini-3.5-flash-lite`).
+- Үнэгүй түвшинд зочдын асуултыг Google сургалтад ашигладаг, өдрийн хязгаартай.
+- Дүр: `assets/amore.svg`, `assets/amore-face.svg`.
+
 ## Зочдын тоо
 Vercel dashboard → borgil-cv → Analytics хэсэгт Web Analytics-ийг асаахад хэдэн хүн орсныг харуулна.
 

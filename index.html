@@ -230,6 +230,36 @@
   .chips li { padding: 8px 14px; border-radius: 999px; border: 1px solid color-mix(in oklab, var(--wine) 45%, transparent); background: color-mix(in oklab, var(--wine) 10%, transparent); font-size: var(--t-small); }
   @media (max-width: 1023px) { .crush__photo { --ratio: 80%; } }
   @media (max-height: 800px) and (min-width: 1024px) { .crush__photo { --ratio: 92%; } }
+
+  /* Amore: the AI assistant, a floating cupid button and its chat panel (answers come from /api/chat) */
+  .amore { --amore: #d4537e; --amore-soft: color-mix(in oklab, #d4537e 18%, var(--p-surface)); position: fixed; right: max(16px, env(safe-area-inset-right)); bottom: max(16px, env(safe-area-inset-bottom)); z-index: 60; font-family: var(--font-text); }
+  .amore__fab { width: 64px; height: 64px; padding: 0; border-radius: 50%; border: 2px solid var(--amore); background: #fff3f7; cursor: pointer; display: grid; place-items: center; overflow: hidden; animation: amore-float 3.2s ease-in-out infinite; transition: transform .15s; }
+  .amore__fab img { width: 54px; height: 54px; }
+  .amore__fab:hover { transform: scale(1.06); }
+  .amore__fab:focus-visible { outline: 2px solid var(--p-accent); outline-offset: 3px; }
+  .amore.is-open .amore__fab { display: none; }
+  @keyframes amore-float { 0%, 100% { translate: 0 0; } 50% { translate: 0 -6px; } }
+  @media (prefers-reduced-motion: reduce) { .amore__fab { animation: none; } }
+  .amore__panel { display: none; flex-direction: column; width: min(380px, calc(100vw - 32px)); height: min(560px, calc(100svh - 32px)); border-radius: 20px; border: 1px solid color-mix(in oklab, var(--p-ink) 14%, transparent); background: var(--p-surface); color: var(--p-ink); overflow: hidden; box-shadow: 0 24px 60px -20px rgb(0 0 0 / .7); }
+  .amore.is-open .amore__panel { display: flex; }
+  .amore__head { display: flex; align-items: center; gap: 12px; padding: 14px 14px 14px 16px; background: var(--amore-soft); }
+  .amore__head img { width: 52px; height: 60px; flex: none; }
+  .amore__name { margin: 0; font-weight: 500; font-size: 17px; }
+  .amore__sub { margin: 0; font-size: 13px; color: var(--p-muted); }
+  .amore__close { margin-left: auto; width: 40px; height: 40px; border-radius: 50%; border: 0; background: transparent; color: var(--p-ink); font-size: 22px; line-height: 1; cursor: pointer; }
+  .amore__close:hover { background: color-mix(in oklab, var(--p-ink) 10%, transparent); }
+  .amore__log { flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; padding: 16px; overscroll-behavior: contain; }
+  .amore__msg { max-width: 85%; margin: 0; padding: 10px 14px; border-radius: 16px; font-size: 15px; line-height: 1.45; white-space: pre-wrap; overflow-wrap: anywhere; }
+  .amore__msg--bot { align-self: flex-start; background: var(--amore-soft); border-bottom-left-radius: 4px; }
+  .amore__msg--me { align-self: flex-end; background: var(--amore); color: #fff; border-bottom-right-radius: 4px; }
+  .amore__msg--wait { color: var(--p-muted); }
+  .amore__note { margin: 0; padding: 0 16px 8px; font-size: 12px; color: var(--p-muted); }
+  .amore__form { display: flex; gap: 8px; padding: 12px; border-top: 1px solid color-mix(in oklab, var(--p-ink) 10%, transparent); }
+  .amore__input { flex: 1; min-width: 0; height: 44px; padding: 0 16px; border-radius: 999px; border: 1px solid color-mix(in oklab, var(--p-ink) 16%, transparent); background: var(--p-bg); color: var(--p-ink); font: 15px var(--font-text); }
+  .amore__input:focus { outline: none; border-color: var(--amore); }
+  .amore__send { width: 44px; height: 44px; flex: none; border-radius: 50%; border: 0; background: var(--amore); color: #fff; font-size: 20px; cursor: pointer; }
+  .amore__send:disabled { opacity: .5; cursor: default; }
+  @media (max-width: 479px) { .amore.is-open { inset: 0; } .amore.is-open .amore__panel { width: 100%; height: 100%; border-radius: 0; border: 0; } }
 </style>
 </head>
 <body>
@@ -700,6 +730,31 @@
   </div>
 </footer>
 
+<!-- AMORE: the AI assistant (a cupid), answers only about Borgil -->
+<div class="amore" data-amore>
+  <button class="amore__fab" type="button" data-amore-open aria-label="Amore туслахтай ярих" data-en-label="Chat with Amore" aria-expanded="false" aria-controls="amore-panel">
+    <img src="assets/amore-face.svg" alt="" width="54" height="54">
+  </button>
+  <section class="amore__panel" id="amore-panel" role="dialog" aria-label="Amore">
+    <header class="amore__head">
+      <img src="assets/amore.svg" alt="" width="52" height="60">
+      <div>
+        <p class="amore__name">Amore</p>
+        <p class="amore__sub" data-en="Borgil's AI assistant">Боргилын AI туслах</p>
+      </div>
+      <button class="amore__close" type="button" data-amore-close aria-label="Хаах" data-en-label="Close">×</button>
+    </header>
+    <div class="amore__log" data-amore-log aria-live="polite">
+      <p class="amore__msg amore__msg--bot" data-en="Hi! I'm Amore ♥ Ask me anything about Borgil: volleyball, school, hobbies.">Сайн уу! Би Amore ♥ Боргилын тухай асуугаарай: волейбол, сургууль, хобби.</p>
+    </div>
+    <p class="amore__note" data-en="Please don't share personal information here.">Хувийн мэдээллээ энд бүү бичээрэй.</p>
+    <form class="amore__form" data-amore-form>
+      <input class="amore__input" name="q" maxlength="500" autocomplete="off" aria-label="Асуулт" data-en-label="Question">
+      <button class="amore__send" type="submit" aria-label="Илгээх" data-en-label="Send">↑</button>
+    </form>
+  </section>
+</div>
+
 <script>
   /* MN / EN: every [data-en] swaps its text, [data-en-alt] its alt, [data-en-label] its aria-label; the choice is remembered */
   (() => {
@@ -781,6 +836,51 @@
     vp.addEventListener('pointerup', (e) => { if (x0 === null) return; const dx = e.clientX - x0; x0 = null; if (Math.abs(dx) > 48) go(i + (dx < 0 ? 1 : -1)); });
     go(0);
   });
+
+  /* Amore: opens the chat, sends the conversation to /api/chat and shows the answer */
+  (() => {
+    const box = document.querySelector('[data-amore]'); if (!box) return;
+    const open = box.querySelector('[data-amore-open]'), log = box.querySelector('[data-amore-log]');
+    const form = box.querySelector('[data-amore-form]'), input = form.q, send = form.querySelector('[type=submit]');
+    const t = {
+      mn: { ph: 'Асуултаа бичнэ үү', wait: 'Бодож байна…', err: 'Уучлаарай, одоо хариулж чадсангүй. Дахин оролдоно уу.' },
+      en: { ph: 'Type your question', wait: 'Thinking…', err: "Sorry, I couldn't answer right now. Please try again." }
+    };
+    const lang = () => document.documentElement.lang === 'en' ? 'en' : 'mn';
+    const history = [];
+    const setPh = () => { input.placeholder = t[lang()].ph; };
+    const add = (text, who) => {
+      const p = document.createElement('p');
+      p.className = 'amore__msg amore__msg--' + who; p.textContent = text;
+      log.appendChild(p); log.scrollTop = log.scrollHeight; return p;
+    };
+    const toggle = (on) => {
+      box.classList.toggle('is-open', on); open.setAttribute('aria-expanded', on);
+      if (on) { setPh(); input.focus(); } else open.focus();
+    };
+    open.addEventListener('click', () => toggle(true));
+    box.querySelector('[data-amore-close]').addEventListener('click', () => toggle(false));
+    box.addEventListener('keydown', (e) => { if (e.key === 'Escape' && box.classList.contains('is-open')) toggle(false); });
+    document.querySelector('[data-lang-toggle]').addEventListener('click', setPh);
+    setPh();
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const q = input.value.trim(); if (!q || send.disabled) return;
+      input.value = ''; add(q, 'me'); history.push({ role: 'user', text: q });
+      send.disabled = true;
+      const wait = add(t[lang()].wait, 'bot'); wait.classList.add('amore__msg--wait');
+      let reply = t[lang()].err;
+      try {
+        const r = await fetch('/api/chat', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ lang: lang(), messages: history.slice(-6) }) });
+        const d = await r.json();
+        if (d && d.reply) reply = d.reply;
+        if (r.ok) history.push({ role: 'assistant', text: reply }); else history.pop();
+      } catch (err) { history.pop(); }
+      wait.classList.remove('amore__msg--wait'); wait.textContent = reply;
+      log.scrollTop = log.scrollHeight;
+      send.disabled = false; input.focus();
+    });
+  })();
 
   /* visitor count: Vercel Web Analytics, only on the published site (the script exists only there) */
   if (/\.vercel\.app$/.test(location.hostname)) {

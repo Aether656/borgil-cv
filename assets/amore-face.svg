@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="112 78 156 156" aria-hidden="true">
+  <circle cx="190" cy="180" r="62" fill="#f8d9c4"/>
+  <circle cx="150" cy="130" r="20" fill="#ef9f27"/>
+  <circle cx="175" cy="118" r="22" fill="#fac775"/>
+  <circle cx="205" cy="118" r="22" fill="#ef9f27"/>
+  <circle cx="230" cy="132" r="20" fill="#fac775"/>
+  <circle cx="135" cy="155" r="14" fill="#fac775"/>
+  <circle cx="245" cy="157" r="14" fill="#ef9f27"/>
+  <circle cx="190" cy="112" r="16" fill="#fac775"/>
+  <circle cx="168" cy="185" r="7" fill="#2c2c2a"/>
+  <circle cx="212" cy="185" r="7" fill="#2c2c2a"/>
+  <circle cx="170" cy="182" r="2.5" fill="#fff"/>
+  <circle cx="214" cy="182" r="2.5" fill="#fff"/>
+  <ellipse cx="155" cy="205" rx="11" ry="7" fill="#f09595" opacity=".7"/>
+  <ellipse cx="225" cy="205" rx="11" ry="7" fill="#f09595" opacity=".7"/>
+  <path d="M178 210 Q 190 222 202 210" fill="none" stroke="#993556" stroke-width="3" stroke-linecap="round"/>
+  <path d="M190 90 C 186 82, 176 84, 178 92 C 179 98, 190 104, 190 104 C 190 104, 201 98, 202 92 C 204 84, 194 82, 190 90 Z" fill="#d4537e"/>
+</svg>
