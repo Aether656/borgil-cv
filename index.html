@@ -201,6 +201,13 @@
   .like__media--pair { display: grid; grid-template-rows: 1fr 1fr; gap: 3px; background: var(--bg); }
   .like__media--pair img { position: relative; inset: auto; }
   .like__media--wine { display: grid; place-items: center; background: radial-gradient(120% 90% at 30% 20%, #8e2a45, #4a0f22 60%, #22070f); }
+  .like__media--sweet, .like__media--energy, .like__media--soda, .like__media--silver { display: grid; place-items: center; }
+  .like__media--sweet { background: radial-gradient(120% 90% at 30% 20%, #f7a8c4, #c2477a 60%, #5e1534); }
+  .like__media--energy { background: radial-gradient(120% 90% at 30% 20%, #4c5d3a, #1c2615 60%, #0b0f08); }
+  .like__media--soda { background: radial-gradient(120% 90% at 30% 20%, #e8574a, #9a1c1c 60%, #3d0909); }
+  .like__media--silver { background: radial-gradient(120% 90% at 30% 20%, #f1f3f6, #9aa3ae 55%, #3b4048); }
+  .like__media--silver .like__big { color: #1b1f26; }
+  .like:hover .like__big { transform: scale(1.06); }
   .like__big { font: 500 clamp(40px, 2.4vw + 18px, 64px)/1 var(--font-display); letter-spacing: -.04em; color: #fbe9ee; transition: transform .5s cubic-bezier(.2,.7,.2,1); }
   .like--music:hover .like__big { transform: scale(1.06); }
   .like--music:focus-visible { outline: 2px solid var(--wine); outline-offset: 4px; border-radius: var(--r-lg); }
@@ -364,7 +371,7 @@
     <div class="wrap">
       <div class="section-head">
         <h2 id="likes-h" data-en="What I love">Миний дуртай зүйлс</h2>
-        <p data-en="Food, hobbies and what I do in my free time.">Хоол, хобби, чөлөөт цагаараа юу хийдэг вэ.</p>
+        <p data-en="Food, sweets, drinks, hobbies, and the gifts that make me happy.">Хоол, амттан, ундаа, хобби, мөн ямар бэлэгт баярладаг вэ.</p>
       </div>
       <div class="likes">
         <article class="like">
@@ -384,6 +391,7 @@
           <p class="me__kicker" data-en="Hobby 03 · Games">Хобби 03 · Тоглоом</p>
           <h3 data-en="Online games">Онлайн тоглоом</h3>
           <p>Mobile Legends: Bang Bang, Counter-Strike 2.</p>
+          <p><b>MLBB ID:</b> 525673368</p>
         </article>
         <a class="like like--music" href="#music">
           <div class="like__media like__media--wine"><span class="like__big">Top 10</span></div>
@@ -391,6 +399,30 @@
           <h3 data-en="Listening to music">Дуу сонсох</h3>
           <p><span data-en="My ten favourite songs, each with a YouTube link">Дуртай 10 дуу маань, YouTube холбоостой</span> <span aria-hidden="true">&darr;</span></p>
         </a>
+        <article class="like">
+          <div class="like__media like__media--sweet"><span class="like__big">Sweeto</span></div>
+          <p class="me__kicker" data-en="Favourite · Sweets">Дуртай · Амттан</p>
+          <h3 data-en="Sweets">Амттан</h3>
+          <p data-en="Ice cream, soft drinks and Sweeto candy.">Зайрмаг, soft drink, Sweeto чихэрт дуртай.</p>
+        </article>
+        <article class="like">
+          <div class="like__media like__media--energy"><span class="like__big">Energy</span></div>
+          <p class="me__kicker" data-en="Favourite · Drinks">Дуртай · Ундаа</p>
+          <h3 data-en="Energy drinks">Эрчим хүчний ундаа</h3>
+          <p>White Monster, Mango, Target.</p>
+        </article>
+        <article class="like">
+          <div class="like__media like__media--soda"><span class="like__big">Cola</span></div>
+          <p class="me__kicker" data-en="Favourite · Drinks">Дуртай · Ундаа</p>
+          <h3 data-en="Soft drinks">Амтат ундаа</h3>
+          <p data-en="Cola, Sprite, Fanta. I drink pretty much all of them.">Cola, Sprite, Fanta. Бараг бүгдийг нь уудаг.</p>
+        </article>
+        <article class="like">
+          <div class="like__media like__media--silver"><span class="like__big" data-en="Gift">Бэлэг</span></div>
+          <p class="me__kicker" data-en="Gift ideas">Бэлэгний санаа</p>
+          <h3 data-en="What makes me happy">Юунд баярладаг вэ</h3>
+          <p data-en="Earphones, snacks, silver necklaces and accessories. I really love them.">Чихэвч, снакс, мөнгөн зүүлт, аксессуарт маш дуртай.</p>
+        </article>
       </div>
     </div>
   </section>
